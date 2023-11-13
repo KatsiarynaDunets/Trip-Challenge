@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47A2B02C29100F312B8 /* AppDelegate.swift */; };
 		523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47C2B02C29100F312B8 /* SceneDelegate.swift */; };
-		523DF47F2B02C29100F312B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47E2B02C29100F312B8 /* ViewController.swift */; };
+		523DF47F2B02C29100F312B8 /* Velcome.swiWelcomeft in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47E2B02C29100F312B8 /* Velcome.swiWelcomeft */; };
 		523DF4822B02C29100F312B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523DF4802B02C29100F312B8 /* Main.storyboard */; };
 		523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4832B02C29100F312B8 /* Trip_Challenge.xcdatamodeld */; };
 		523DF4872B02C29200F312B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 523DF4862B02C29200F312B8 /* Assets.xcassets */; };
@@ -17,6 +17,7 @@
 		523DF4952B02C29200F312B8 /* Trip_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4942B02C29200F312B8 /* Trip_ChallengeTests.swift */; };
 		523DF49F2B02C29200F312B8 /* Trip_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF49E2B02C29200F312B8 /* Trip_ChallengeUITests.swift */; };
 		523DF4A12B02C29200F312B8 /* Trip_ChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4A02B02C29200F312B8 /* Trip_ChallengeUITestsLaunchTests.swift */; };
+		523DF4B22B02CF0500F312B8 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4B12B02CF0500F312B8 /* MainPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,7 @@
 		523DF4772B02C29100F312B8 /* Trip Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		523DF47A2B02C29100F312B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		523DF47C2B02C29100F312B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		523DF47E2B02C29100F312B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		523DF47E2B02C29100F312B8 /* Velcome.swiWelcomeft */ = {isa = PBXFileReference; lastKnownFileType = text; path = Velcome.swiWelcomeft; sourceTree = "<group>"; };
 		523DF4812B02C29100F312B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		523DF4842B02C29100F312B8 /* Trip_Challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trip_Challenge.xcdatamodel; sourceTree = "<group>"; };
 		523DF4862B02C29200F312B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		523DF49A2B02C29200F312B8 /* Trip ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trip ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		523DF49E2B02C29200F312B8 /* Trip_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip_ChallengeUITests.swift; sourceTree = "<group>"; };
 		523DF4A02B02C29200F312B8 /* Trip_ChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip_ChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		523DF4B12B02CF0500F312B8 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +103,13 @@
 		523DF4792B02C29100F312B8 /* Trip Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				523DF47A2B02C29100F312B8 /* AppDelegate.swift */,
-				523DF47C2B02C29100F312B8 /* SceneDelegate.swift */,
-				523DF47E2B02C29100F312B8 /* ViewController.swift */,
-				523DF4802B02C29100F312B8 /* Main.storyboard */,
+				523DF4AD2B02C41E00F312B8 /* Models */,
+				523DF4B02B02C44E00F312B8 /* Controllers */,
+				523DF4AE2B02C42F00F312B8 /* Views */,
 				523DF4862B02C29200F312B8 /* Assets.xcassets */,
-				523DF4882B02C29200F312B8 /* LaunchScreen.storyboard */,
 				523DF48B2B02C29200F312B8 /* Info.plist */,
 				523DF4832B02C29100F312B8 /* Trip_Challenge.xcdatamodeld */,
+				523DF4AF2B02C44000F312B8 /* Delegates */,
 			);
 			path = "Trip Challenge";
 			sourceTree = "<group>";
@@ -128,6 +129,40 @@
 				523DF4A02B02C29200F312B8 /* Trip_ChallengeUITestsLaunchTests.swift */,
 			);
 			path = "Trip ChallengeUITests";
+			sourceTree = "<group>";
+		};
+		523DF4AD2B02C41E00F312B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		523DF4AE2B02C42F00F312B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				523DF4802B02C29100F312B8 /* Main.storyboard */,
+				523DF4882B02C29200F312B8 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		523DF4AF2B02C44000F312B8 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				523DF47A2B02C29100F312B8 /* AppDelegate.swift */,
+				523DF47C2B02C29100F312B8 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		523DF4B02B02C44E00F312B8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				523DF47E2B02C29100F312B8 /* Velcome.swiWelcomeft */,
+				523DF4B12B02CF0500F312B8 /* MainPage.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523DF4B22B02CF0500F312B8 /* MainPage.swift in Sources */,
 				523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */,
-				523DF47F2B02C29100F312B8 /* ViewController.swift in Sources */,
+				523DF47F2B02C29100F312B8 /* Velcome.swiWelcomeft in Sources */,
 				523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */,
 				523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */,
 			);
