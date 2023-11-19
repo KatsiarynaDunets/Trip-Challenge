@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  Welcome.swift
 //  Trip Challenge
 //
 //  Created by Kate on 13/11/2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainPage: UIViewController {
+class WelcomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
