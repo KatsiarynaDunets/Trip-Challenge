@@ -29,6 +29,7 @@
 		523DF4C72B0AB40000F312B8 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C62B0AB40000F312B8 /* AppError.swift */; };
 		523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C82B0AB5A600F312B8 /* MainVC.swift */; };
 		523DF4CB2B0AB73600F312B8 /* PopularRoutesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4CA2B0AB73600F312B8 /* PopularRoutesVC.swift */; };
+		5285B5542B155A9D006FA29E /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5285B5532B155A9D006FA29E /* UserProfile.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		523DF4C62B0AB40000F312B8 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		523DF4C82B0AB5A600F312B8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		523DF4CA2B0AB73600F312B8 /* PopularRoutesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRoutesVC.swift; sourceTree = "<group>"; };
+		5285B5532B155A9D006FA29E /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				523DF4802B02C29100F312B8 /* Main.storyboard */,
+				5285B5532B155A9D006FA29E /* UserProfile.storyboard */,
 				523DF4882B02C29200F312B8 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				523DF48A2B02C29200F312B8 /* LaunchScreen.storyboard in Resources */,
+				5285B5542B155A9D006FA29E /* UserProfile.storyboard in Resources */,
 				523DF4872B02C29200F312B8 /* Assets.xcassets in Resources */,
 				523DF4822B02C29100F312B8 /* Main.storyboard in Resources */,
 			);
