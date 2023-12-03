@@ -25,5 +25,5 @@ class ProgressManager {
 
 // Пример использования
 let progressManager = ProgressManager(progressList: [])
-progressManager.markChallengeAsCompleted(userId: 1, challengeId: 1)
-//print(progressManager.progressList)
+//progressManager.markChallengeAsCompleted(userId: 1, challengeId: 1)
+////print(progressManager.progressList)

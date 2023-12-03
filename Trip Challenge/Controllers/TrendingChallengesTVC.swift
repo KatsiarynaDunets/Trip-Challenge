@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopularRoutesVC: UITableViewController {
+class TrendingChallengesTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

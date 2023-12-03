@@ -28,8 +28,12 @@
 		523DF4C52B0AB03000F312B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 523DF4C42B0AB03000F312B8 /* Alamofire */; };
 		523DF4C72B0AB40000F312B8 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C62B0AB40000F312B8 /* AppError.swift */; };
 		523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C82B0AB5A600F312B8 /* MainVC.swift */; };
-		523DF4CB2B0AB73600F312B8 /* PopularRoutesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4CA2B0AB73600F312B8 /* PopularRoutesVC.swift */; };
+		523DF4CB2B0AB73600F312B8 /* TrendingChallengesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */; };
 		5285B5542B155A9D006FA29E /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5285B5532B155A9D006FA29E /* UserProfile.storyboard */; };
+		5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5D62B1D32CC006FA29E /* MapVC.swift */; };
+		5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5D82B1D332D006FA29E /* ProfileTVC.swift */; };
+		5285B5DB2B1D3372006FA29E /* PromoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DA2B1D3372006FA29E /* PromoVC.swift */; };
+		5285B5DD2B1D38F8006FA29E /* ChallengeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +78,12 @@
 		523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressManager.swift; sourceTree = "<group>"; };
 		523DF4C62B0AB40000F312B8 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		523DF4C82B0AB5A600F312B8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		523DF4CA2B0AB73600F312B8 /* PopularRoutesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRoutesVC.swift; sourceTree = "<group>"; };
+		523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingChallengesTVC.swift; sourceTree = "<group>"; };
 		5285B5532B155A9D006FA29E /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		5285B5D62B1D32CC006FA29E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		5285B5D82B1D332D006FA29E /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
+		5285B5DA2B1D3372006FA29E /* PromoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoVC.swift; sourceTree = "<group>"; };
+		5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +203,11 @@
 			children = (
 				523DF4B32B02D00500F312B8 /* WelcomeVC.swift */,
 				523DF4C82B0AB5A600F312B8 /* MainVC.swift */,
-				523DF4CA2B0AB73600F312B8 /* PopularRoutesVC.swift */,
+				523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */,
+				5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */,
+				5285B5D62B1D32CC006FA29E /* MapVC.swift */,
+				5285B5D82B1D332D006FA29E /* ProfileTVC.swift */,
+				5285B5DA2B1D3372006FA29E /* PromoVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -344,13 +356,17 @@
 				523DF4C02B0AAE8E00F312B8 /* ProfileManager.swift in Sources */,
 				523DF4C72B0AB40000F312B8 /* AppError.swift in Sources */,
 				523DF4C22B0AAEE100F312B8 /* ProgressManager.swift in Sources */,
-				523DF4CB2B0AB73600F312B8 /* PopularRoutesVC.swift in Sources */,
+				5285B5DB2B1D3372006FA29E /* PromoVC.swift in Sources */,
+				523DF4CB2B0AB73600F312B8 /* TrendingChallengesTVC.swift in Sources */,
 				523DF4B62B0AAD1800F312B8 /* User.swift in Sources */,
 				523DF4B42B02D00500F312B8 /* WelcomeVC.swift in Sources */,
 				523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */,
+				5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */,
 				523DF4BA2B0AAD8900F312B8 /* Achievement.swift in Sources */,
 				523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */,
 				523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */,
+				5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */,
+				5285B5DD2B1D38F8006FA29E /* ChallengeDetailVC.swift in Sources */,
 				523DF4BE2B0AAE6100F312B8 /* NavigationManager.swift in Sources */,
 				523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */,
 			);

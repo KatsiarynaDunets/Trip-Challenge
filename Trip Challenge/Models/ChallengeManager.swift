@@ -4,8 +4,9 @@
 //
 //  Created by Kate on 13/11/2023.
 //
-
 import UIKit
+
+// Предполагаем, что Challenge и AppError уже определены где-то в вашем коде.
 
 class ChallengeManager {
     var challenges: [Challenge]
@@ -23,7 +24,7 @@ class ChallengeManager {
 }
 
 // Пример использования с обработкой ошибок
-let challengeManager = ChallengeManager(challenges: [])
-if case let Result.failure(error) = challengeManager.getAllChallenges() {
-    print("Error: \(error)")
-}
+var challengeManager = ChallengeManager(challenges: [])
+let result = challengeManager.getAllChallenges()
+
+

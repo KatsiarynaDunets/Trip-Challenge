@@ -1,28 +1,21 @@
 //
-//  Welcome.swift
+//  MapVC.swift
 //  Trip Challenge
 //
-//  Created by Kate on 13/11/2023.
+//  Created by Kate on 03/12/2023.
 //
 
 import UIKit
 
-class WelcomeVC: UIViewController {
+class MapVC: UIViewController {
 
-    @IBOutlet weak var startLbl: UILabel!
-    @IBOutlet weak var welcomwLbl: UILabel!
-    @IBOutlet weak var startBtn: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func startButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "showMainVC", sender: self)
-    }
+
     /*
     // MARK: - Navigation
 

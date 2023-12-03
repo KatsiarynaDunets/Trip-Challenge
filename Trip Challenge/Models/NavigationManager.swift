@@ -47,6 +47,6 @@ class NavigationManager: NSObject, MKMapViewDelegate {
 // Пример использования с обработкой ошибок
 let mapView = MKMapView()
 let navigationManager = NavigationManager(mapView: mapView)
-if case let Result.failure(error) = navigationManager.showChallengeLocation(challenge: challenge1) {
-    print("Error: \(error)")
-}
+//if case let Result.failure(error) = navigationManager.showChallengeLocation(challenge: challenge1) {
+//    print("Error: \(error)")
+//}
