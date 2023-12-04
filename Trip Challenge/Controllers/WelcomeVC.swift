@@ -5,32 +5,48 @@
 //  Created by Kate on 13/11/2023.
 //
 
+import CoreLocation
 import UIKit
 
 class WelcomeVC: UIViewController {
-
-    @IBOutlet weak var startLbl: UILabel!
-    @IBOutlet weak var welcomwLbl: UILabel!
-    @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet var startLbl: UILabel!
+    @IBOutlet var welcomwLbl: UILabel!
+    @IBOutlet var startBtn: UIButton!
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
+        // locationManager.delegate = self
     }
     
-    @IBAction func startButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "showMainVC", sender: self)
+    private func checkLocationAuthorizationStatus() {
+        let status = locationManager.authorizationStatus
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            // Show an alert letting the user know they need to enable Location Services
+            showAlertToEnableLocationServices()
+        case .authorizedWhenInUse, .authorizedAlways:
+            performSegue(withIdentifier: "showMainVC", sender: self)
+        @unknown default:
+            fatalError("Unhandled authorization status")
+        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            performSegue(withIdentifier: "showMainVC", sender: self)
+        }
     }
-    */
-
+    
+    private func showAlertToEnableLocationServices() {
+        let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    @IBAction func startBtnTapped(_ sender: UIButton) {
+        checkLocationAuthorizationStatus()
+    }
 }

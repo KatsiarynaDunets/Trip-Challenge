@@ -29,11 +29,12 @@
 		523DF4C72B0AB40000F312B8 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C62B0AB40000F312B8 /* AppError.swift */; };
 		523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C82B0AB5A600F312B8 /* MainVC.swift */; };
 		523DF4CB2B0AB73600F312B8 /* TrendingChallengesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */; };
-		5285B5542B155A9D006FA29E /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5285B5532B155A9D006FA29E /* UserProfile.storyboard */; };
 		5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5D62B1D32CC006FA29E /* MapVC.swift */; };
 		5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5D82B1D332D006FA29E /* ProfileTVC.swift */; };
 		5285B5DB2B1D3372006FA29E /* PromoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DA2B1D3372006FA29E /* PromoVC.swift */; };
 		5285B5DD2B1D38F8006FA29E /* ChallengeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */; };
+		5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DE2B1E7871006FA29E /* Promo.swift */; };
+		5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5E12B1E7B3B006FA29E /* PromoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,11 +80,12 @@
 		523DF4C62B0AB40000F312B8 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		523DF4C82B0AB5A600F312B8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingChallengesTVC.swift; sourceTree = "<group>"; };
-		5285B5532B155A9D006FA29E /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		5285B5D62B1D32CC006FA29E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		5285B5D82B1D332D006FA29E /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
 		5285B5DA2B1D3372006FA29E /* PromoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoVC.swift; sourceTree = "<group>"; };
 		5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVC.swift; sourceTree = "<group>"; };
+		5285B5DE2B1E7871006FA29E /* Promo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promo.swift; sourceTree = "<group>"; };
+		5285B5E12B1E7B3B006FA29E /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,10 +173,8 @@
 				523DF4B72B0AAD3B00F312B8 /* Challenge.swift */,
 				523DF4B92B0AAD8900F312B8 /* Achievement.swift */,
 				523DF4BB2B0AADA000F312B8 /* Progress.swift */,
-				523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */,
-				523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */,
-				523DF4BF2B0AAE8E00F312B8 /* ProfileManager.swift */,
-				523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */,
+				5285B5DE2B1E7871006FA29E /* Promo.swift */,
+				5285B5E02B1E7AFD006FA29E /* Classes */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				523DF4802B02C29100F312B8 /* Main.storyboard */,
-				5285B5532B155A9D006FA29E /* UserProfile.storyboard */,
 				523DF4882B02C29200F312B8 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -208,8 +207,20 @@
 				5285B5D62B1D32CC006FA29E /* MapVC.swift */,
 				5285B5D82B1D332D006FA29E /* ProfileTVC.swift */,
 				5285B5DA2B1D3372006FA29E /* PromoVC.swift */,
+				5285B5E12B1E7B3B006FA29E /* PromoCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5285B5E02B1E7AFD006FA29E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */,
+				523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */,
+				523DF4BF2B0AAE8E00F312B8 /* ProfileManager.swift */,
+				523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				523DF48A2B02C29200F312B8 /* LaunchScreen.storyboard in Resources */,
-				5285B5542B155A9D006FA29E /* UserProfile.storyboard in Resources */,
 				523DF4872B02C29200F312B8 /* Assets.xcassets in Resources */,
 				523DF4822B02C29100F312B8 /* Main.storyboard in Resources */,
 			);
@@ -361,8 +371,10 @@
 				523DF4B62B0AAD1800F312B8 /* User.swift in Sources */,
 				523DF4B42B02D00500F312B8 /* WelcomeVC.swift in Sources */,
 				523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */,
+				5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */,
 				5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */,
 				523DF4BA2B0AAD8900F312B8 /* Achievement.swift in Sources */,
+				5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */,
 				523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */,
 				523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */,
 				5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */,

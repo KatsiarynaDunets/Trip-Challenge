@@ -28,18 +28,16 @@ class ChallengeDetailVC: UIViewController {
             // Добавьте их как subview и настройте constraints
         }
 
-        private func configureView() {
-            guard let challenge = challenge else { return }
-
-            titleLabel.text = challenge.title
-            descriptionLabel.text = challenge.description
-            // Загрузите изображение в challengeImageView, если оно есть
-            // Настройте acceptButton
-        }
+    private func configureView() {
+        guard let challenge = challenge else { return }
+        
+        titleLabel.text = challenge.title
+        descriptionLabel.text = challenge.description
+    }
 
         // Действие для acceptButton
         @objc private func acceptChallenge() {
-            // Реализуйте логику принятия challenge
+            // логика принятия challenge
         }
     }
 
