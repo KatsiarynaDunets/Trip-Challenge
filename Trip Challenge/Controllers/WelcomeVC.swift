@@ -46,6 +46,7 @@ class WelcomeVC: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)
     }
+    
     @IBAction func startBtnTapped(_ sender: UIButton) {
         checkLocationAuthorizationStatus()
     }

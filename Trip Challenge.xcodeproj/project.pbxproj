@@ -35,6 +35,7 @@
 		5285B5DD2B1D38F8006FA29E /* ChallengeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */; };
 		5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DE2B1E7871006FA29E /* Promo.swift */; };
 		5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5E12B1E7B3B006FA29E /* PromoCell.swift */; };
+		5285B7742B548C0B006FA29E /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVC.swift; sourceTree = "<group>"; };
 		5285B5DE2B1E7871006FA29E /* Promo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promo.swift; sourceTree = "<group>"; };
 		5285B5E12B1E7B3B006FA29E /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
+		5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */,
 				523DF4BF2B0AAE8E00F312B8 /* ProfileManager.swift */,
 				523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */,
+				5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */,
 				5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */,
 				5285B5DD2B1D38F8006FA29E /* ChallengeDetailVC.swift in Sources */,
+				5285B7742B548C0B006FA29E /* ChallengeCollectionViewCell.swift in Sources */,
 				523DF4BE2B0AAE6100F312B8 /* NavigationManager.swift in Sources */,
 				523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */,
 			);
