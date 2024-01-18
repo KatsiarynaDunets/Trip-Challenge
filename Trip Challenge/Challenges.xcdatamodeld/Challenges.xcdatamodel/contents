@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Challenges" representedClassName="Challenges" syncable="YES" codeGenerationType="class">
+        <attribute name="challengeAverageRating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="challengeCategory" optional="YES" attributeType="String"/>
+        <attribute name="challengeDescription" optional="YES" attributeType="String"/>
+        <attribute name="challengeID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeImage" optional="YES" attributeType="Binary"/>
+        <attribute name="challengeLat" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeLon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeName" optional="YES" attributeType="String"/>
+        <attribute name="challengeRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numberOfPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="PointsOfInterest" representedClassName="PointsOfInterest" syncable="YES" codeGenerationType="class">
+        <attribute name="poiCategory" optional="YES"/>
+        <attribute name="poiDescription" optional="YES"/>
+        <attribute name="poiID" optional="YES"/>
+        <attribute name="poiImage" optional="YES"/>
+        <attribute name="poiLat" optional="YES"/>
+        <attribute name="poiLon" optional="YES"/>
+        <attribute name="poiName" optional="YES"/>
+        <attribute name="poiNumber" optional="YES"/>
+        <attribute name="poiPromo" optional="YES"/>
+        <attribute name="poiStatus" optional="YES"/>
+    </entity>
+</model>

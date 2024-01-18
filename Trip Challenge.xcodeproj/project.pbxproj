@@ -36,6 +36,7 @@
 		5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DE2B1E7871006FA29E /* Promo.swift */; };
 		5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5E12B1E7B3B006FA29E /* PromoCell.swift */; };
 		5285B7742B548C0B006FA29E /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */; };
+		5285B7772B59D7E4006FA29E /* Challenges.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5285B7752B59D7E4006FA29E /* Challenges.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		5285B5DE2B1E7871006FA29E /* Promo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promo.swift; sourceTree = "<group>"; };
 		5285B5E12B1E7B3B006FA29E /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 		5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
+		5285B7762B59D7E4006FA29E /* Challenges.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenges.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				523DF4862B02C29200F312B8 /* Assets.xcassets */,
 				523DF48B2B02C29200F312B8 /* Info.plist */,
 				523DF4832B02C29100F312B8 /* Trip_Challenge.xcdatamodeld */,
+				5285B7752B59D7E4006FA29E /* Challenges.xcdatamodeld */,
 				523DF4AF2B02C44000F312B8 /* Delegates */,
 			);
 			path = "Trip Challenge";
@@ -376,6 +379,7 @@
 				523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */,
 				5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */,
 				5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */,
+				5285B7772B59D7E4006FA29E /* Challenges.xcdatamodeld in Sources */,
 				523DF4BA2B0AAD8900F312B8 /* Achievement.swift in Sources */,
 				5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */,
 				523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */,
@@ -754,6 +758,16 @@
 			);
 			currentVersion = 523DF4842B02C29100F312B8 /* Trip_Challenge.xcdatamodel */;
 			path = Trip_Challenge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		5285B7752B59D7E4006FA29E /* Challenges.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5285B7762B59D7E4006FA29E /* Challenges.xcdatamodel */,
+			);
+			currentVersion = 5285B7762B59D7E4006FA29E /* Challenges.xcdatamodel */;
+			path = Challenges.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
