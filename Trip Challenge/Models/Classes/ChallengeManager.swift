@@ -4,27 +4,53 @@
 //
 //  Created by Kate on 13/11/2023.
 //
-import UIKit
 
-// Предполагаем, что Challenge и AppError уже определены где-то в вашем коде.
+
+import UIKit
+import CoreData
 
 class ChallengeManager {
-    var challenges: [Challenge]
+    private let context: NSManagedObjectContext
 
-    init(challenges: [Challenge]) {
-        self.challenges = challenges
+    init(context: NSManagedObjectContext) {
+        self.context = context
     }
 
-    func getAllChallenges() -> Result<[Challenge], AppError> {
-        guard !challenges.isEmpty else {
-            return .failure(.challengeNotFound)
+    func getAllChallenges() -> Result<[Challenge], Error> {
+        let request: NSFetchRequest<Challenge> = NSFetchRequest<Challenge>(entityName: "Challenge")
+        do {
+            let challenges = try context.fetch(request)
+            return .success(challenges)
+        } catch {
+            return .failure(error)
         }
-        return .success(challenges)
     }
 }
 
-// Пример использования с обработкой ошибок
-var challengeManager = ChallengeManager(challenges: [])
-let result = challengeManager.getAllChallenges()
+class SomeViewController: UIViewController {
+
+    var challengeManager: ChallengeManager!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Получаем контекст из AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        challengeManager = ChallengeManager(context: context)
+
+        // Получаем данные и обрабатываем результат
+        let result = challengeManager.getAllChallenges()
+        switch result {
+        case .success(let challenges):
+            // Обработка успешного получения челленджей
+            print(challenges)
+        case .failure(let error):
+            // Обработка ошибки
+            print("Ошибка: \(error)")
+        }
+    }
+}
+
 
 

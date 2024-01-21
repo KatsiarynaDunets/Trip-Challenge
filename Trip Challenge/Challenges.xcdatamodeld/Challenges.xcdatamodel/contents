@@ -7,21 +7,23 @@
         <attribute name="challengeID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="challengeImage" optional="YES" attributeType="Binary"/>
         <attribute name="challengeLat" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeLocation" optional="YES" attributeType="String"/>
         <attribute name="challengeLon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="challengeName" optional="YES" attributeType="String"/>
+        <attribute name="challengeNumberOfPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="challengeRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="numberOfPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeTitle" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PointsOfInterest" representedClassName="PointsOfInterest" syncable="YES" codeGenerationType="class">
-        <attribute name="poiCategory" optional="YES"/>
-        <attribute name="poiDescription" optional="YES"/>
-        <attribute name="poiID" optional="YES"/>
-        <attribute name="poiImage" optional="YES"/>
-        <attribute name="poiLat" optional="YES"/>
-        <attribute name="poiLon" optional="YES"/>
-        <attribute name="poiName" optional="YES"/>
-        <attribute name="poiNumber" optional="YES"/>
-        <attribute name="poiPromo" optional="YES"/>
-        <attribute name="poiStatus" optional="YES"/>
+        <attribute name="poiCategory" optional="YES" attributeType="String"/>
+        <attribute name="poiDescription" optional="YES" attributeType="String"/>
+        <attribute name="poiID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poiImage" optional="YES" attributeType="Binary"/>
+        <attribute name="poiLat" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poiLocation" optional="YES" attributeType="String"/>
+        <attribute name="poiLon" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poiNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poiPromo" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="poiStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="poiTitle" optional="YES" attributeType="String"/>
     </entity>
 </model>

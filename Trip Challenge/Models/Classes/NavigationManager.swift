@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import CoreData
 
 class NavigationManager: NSObject, MKMapViewDelegate {
     var mapView: MKMapView

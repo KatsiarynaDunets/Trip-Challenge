@@ -5,6 +5,7 @@
 //  Created by Kate on 19/11/2023.
 //
 import UIKit
+import CoreData
 
 
 class ProfileManager {

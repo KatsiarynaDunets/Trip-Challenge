@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ChallengeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var challengeImageView: UIImageView!
