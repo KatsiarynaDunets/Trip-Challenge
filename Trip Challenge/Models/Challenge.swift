@@ -21,7 +21,7 @@ public class Challenge: NSManagedObject {
     @NSManaged public var challengeNumberOfPoints: Int16
     @NSManaged public var challengeRating: Int16
     @NSManaged public var challengeTitle: String
-    
+    @NSManaged public var challengeStatus: String
     
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: challengeLat, longitude: challengeLon)
@@ -35,8 +35,7 @@ extension Challenge {
     }
     
     func calculateDistanceToNearestPoint(from userLocation: CLLocation) -> CLLocationDistance? {
-            // Предполагается, что у Challenge есть связь с PointsOfInterest
-            // и что у PointsOfInterest есть свойство 'coordinate'
+            //у Challenge есть связь с PointsOfInterest
             guard let pointsOfInterest = self.pointsOfInterest as? Set<PointsOfInterest>, !pointsOfInterest.isEmpty else {
                 return nil
             }

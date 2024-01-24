@@ -37,7 +37,7 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         }
 
     private func loadPromoData() {
-        // Example data - replace with real data loading logic
+        // Example data
         promoData = [
             Promo(title: "Xmas Sale", description: "Get 20% off on all Christmas items!", discount: "20%", activeUntil: Date().addingTimeInterval(86400 * 30)), // Active for 30 days
             Promo(title: "Winter Special", description: "Special discounts on winter gear.", discount: "15%", activeUntil: Date().addingTimeInterval(86400 * 60)) // Active for 60 days

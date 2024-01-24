@@ -20,7 +20,7 @@ public class PointsOfInterest: NSManagedObject {
     @NSManaged public var poiLon: Double
     @NSManaged public var poiNumber: Int16
     @NSManaged public var poiPromo: Bool
-    @NSManaged public var poiStatus: Bool
+    @NSManaged public var poiStatus: String
     @NSManaged public var poiTitle: String
 
     var coordinate: CLLocationCoordinate2D {

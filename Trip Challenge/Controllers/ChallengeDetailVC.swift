@@ -5,10 +5,10 @@
 //  Created by Kate on 03/12/2023.
 //
 
-import CoreLocation
 import UIKit
+import CoreLocation
 
-class ChallengeDetailVC: UIViewController {
+class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
     var challenge: Challenge? // Challenge - модель данных
 
     private let challengeImageView = UIImageView()
@@ -24,34 +24,31 @@ class ChallengeDetailVC: UIViewController {
     private let maxRating = 5
     private let locationManager = CLLocationManager()
 
-      override func viewDidLoad() {
-          super.viewDidLoad()
-          setupLayout()
-          configureView()
-          configureLocationManager()
-      }
 
-      private func configureLocationManager() {
-//          locationManager.delegate = self
-          locationManager.desiredAccuracy = kCLLocationAccuracyBest
-          locationManager.requestWhenInUseAuthorization() // или requestAlwaysAuthorization, в зависимости от потребностей
-          locationManager.startUpdatingLocation()
-      }
-    
-       func updateDistanceToChallenge() {
-           guard let userLocation = locationManager.location, let challenge = challenge else {
-               return
-           }
-    
-           // CLLocationManagerDelegate methods
-             func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-                 updateDistanceToChallenge()
-             }
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           setupLayout()
+           configureView()
+           configureLocationManager()
+       }
 
+       private func configureLocationManager() {
+           locationManager.delegate = self
+           locationManager.desiredAccuracy = kCLLocationAccuracyBest
+           locationManager.requestWhenInUseAuthorization()
+           locationManager.startUpdatingLocation()
+       }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+           updateDistanceToChallenge()
+       }
+
+    private func updateDistanceToChallenge() {
+           guard let userLocation = locationManager.location, let challenge = challenge else { return }
            let distance = challenge.calculateDistanceToNearestPoint(from: userLocation)
            if let distance = distance {
                print("\(distance) m")
-               // Здесь можно обновить интерфейс, отображая расстояние
+               distanceLabel.text = "Расстояние: \(distance) м"
            } else {
                print("Точки маршрута отсутствуют")
            }
@@ -124,7 +121,7 @@ class ChallengeDetailVC: UIViewController {
 
         // Настройка Discover Button
         discoverButton.setTitle("Discover", for: .normal)
-        discoverButton.backgroundColor = .blue // Измените цвет на ваш выбор
+        discoverButton.backgroundColor = .systemMint
         discoverButton.layer.cornerRadius = 25
         discoverButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(discoverButton)
@@ -160,12 +157,12 @@ class ChallengeDetailVC: UIViewController {
         categoryLabel.text = challenge.challengeCategory
         descriptionLabel.text = challenge.challengeDescription
 
-        // Установка изображения (если оно есть)
-        if let imageData = challenge.challengeImage, let image = UIImage(data: imageData) {
-            challengeImageView.image = image
-        }
+        // Установка изображения
+        let image = UIImage(data: challenge.challengeImage)
+           challengeImageView.image = image
 
-        // Предполагаем, что у вас есть метод для расчета расстояния до челленджа, если это необходимо
+
+        // есть метод для расчета расстояния до челленджа
         // distanceLabel.text = "Расстояние: \(расчетное_расстояние)"
 
         pointsLabel.text = "Количество точек: \(challenge.challengeNumberOfPoints)"
@@ -180,23 +177,39 @@ class ChallengeDetailVC: UIViewController {
     // Настройка рейтинга звезд (ratingStarsView) в зависимости от рейтинга challenge
 }
 
-func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    // Установка frame для градиента
-    gradientLayer.frame = view.bounds
-}
-
 private func acceptChallenge() {
-    // Логика принятия challenge
-    // добавить код для изменения состояния Challenge в Core Data
-    guard let challenge = challenge else { return }
+    guard let challenge = self.challenge else { return }
     // Пример: challenge.isAccepted = true
-
-    // Сохранение изменений в Core Data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     do {
         try context.save()
     } catch {
         print("Ошибка сохранения изменений: \(error)")
+    }
+}
+
+class ChallengesViewController: UIViewController {
+    
+    var challenges: [Challenge] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        challenges = DataManager.shared.fetchAllChallenges()
+        // Отобразить челленджи...
+    }
+
+    func showChallengeDetails(_ challenge: Challenge) {
+        let pois = DataManager.shared.fetchPointsOfInterest(for: challenge)
+        // Показать детали челленджа и точек интереса...
+    }
+
+    func startChallenge(_ challenge: Challenge) {
+        DataManager.shared.activateChallenge(challenge)
+        // Обновить UI и начать челлендж...
+    }
+
+    func markPOIVisited(_ poi: PointsOfInterest) {
+        DataManager.shared.markPointOfInterestAsVisited(poi)
+        // Обновить UI для отмеченной точки интереса...
     }
 }

@@ -160,7 +160,7 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Установите размеры карточек
+        // размеры карточек
         return CGSize(width: 150, height: 100)
     }
 }
