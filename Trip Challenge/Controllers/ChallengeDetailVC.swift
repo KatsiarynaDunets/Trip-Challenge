@@ -158,6 +158,7 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
         descriptionLabel.text = challenge.challengeDescription
 
         // Установка изображения
+    
         let image = UIImage(data: challenge.challengeImage)
            challengeImageView.image = image
 

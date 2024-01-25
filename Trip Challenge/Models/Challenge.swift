@@ -36,6 +36,7 @@ extension Challenge {
     
     func calculateDistanceToNearestPoint(from userLocation: CLLocation) -> CLLocationDistance? {
             //у Challenge есть связь с PointsOfInterest
+            // у PointsOfInterest есть свойство 'coordinate'
             guard let pointsOfInterest = self.pointsOfInterest as? Set<PointsOfInterest>, !pointsOfInterest.isEmpty else {
                 return nil
             }
