@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct Promo {
     let title: String
@@ -21,6 +22,8 @@ struct Promo {
     isActive() is a helper method to quickly check if the promo is still active based on the current date.
     */
     // Initialize a Promo object
+    
+    
     init(title: String, description: String, discount: String, activeUntil: Date) {
         self.title = title
         self.description = description

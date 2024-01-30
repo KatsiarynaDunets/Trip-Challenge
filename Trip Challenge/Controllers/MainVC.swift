@@ -5,22 +5,21 @@
 //  Created by Kate on 19/11/2023.
 //
 
-import UIKit
-import MapKit
+import CoreData
 import CoreLocation
+import MapKit
+import UIKit
 
 class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var trendingChallengesCollectionView: UICollectionView!
-    @IBOutlet weak var nearYouChallengesCollectionView: UICollectionView!
-    @IBOutlet weak var citySelectionMenu: UIButton!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var trendingChallengesCollectionView: UICollectionView!
+    @IBOutlet var nearYouChallengesCollectionView: UICollectionView!
+    @IBOutlet var citySelectionMenu: UIButton!
     
     var trendingChallenges: [Challenge] = []
     var nearYouChallenges: [Challenge] = []
     var userCoordinate: CLLocationCoordinate2D?
     var locationManager = CLLocationManager()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +27,14 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
         setupMapView()
         fetchChallenges()
        
-        // Request location permissions
+        
 //        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization() // Запрос разрешения на использование геолокации
 
-               // Start updating location
-               locationManager.startUpdatingLocation()
         // Start updating location
-              locationManager.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
     
         // Настройка collection views
         trendingChallengesCollectionView.delegate = self
@@ -45,8 +44,15 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
         nearYouChallengesCollectionView.dataSource = self
     }
     
-    // Инициализация ChallengeManager с примерными данными
-    var challengeManager = ChallengeManager(challenges: [])
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            print("Текущее местоположение: \(location)")
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Ошибка получения местоположения: \(error)")
+    }
     
     // Настройка карты
     private func setupMapView() {
@@ -66,11 +72,10 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
     
     // Загрузка challenges
     private func fetchChallenges() {
-        let result = challengeManager.getAllChallenges()
-        switch result {
-        case .success(let challenges):
-            // Обработка успешного результата
-            print("Challenges: \(challenges)")
+        let context = self.getContext()
+        let request = NSFetchRequest<Challenge>(entityName: "Challenge")
+        do {
+            let challenges = try context.fetch(request)
 
             // Определите координаты пользователя (возможно, используя CLLocationManager или другой способ)
             guard let userCoordinate = locationManager.location?.coordinate else {
@@ -86,14 +91,29 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
                 return distanceToFirst < distanceToSecond
             })
 
-            // Обновить интерфейс пользователя данными challenges!!!
-            trendingChallengesCollectionView.reloadData()
-            nearYouChallengesCollectionView.reloadData()
-            
-        case .failure(let error):
-            // Обработка ошибки
-            print("Error: \(error)")
+            DispatchQueue.main.async {
+                self.trendingChallengesCollectionView.reloadData()
+                self.nearYouChallengesCollectionView.reloadData()
+            }
+        } catch {
+            print("Ошибка при загрузке данных: \(error)")
             // Показать сообщение об ошибке пользователю
+        }
+    }
+
+    // Получение контекста Core Data
+    private func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showChallengeDetail" {
+            if let detailVC = segue.destination as? ChallengeDetailVC, let challenge = sender as? Challenge {
+                detailVC.challenge = challenge
+            }
         }
     }
     
@@ -140,7 +160,7 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Установите размеры карточек
+        // размеры карточек
         return CGSize(width: 150, height: 100)
     }
 }

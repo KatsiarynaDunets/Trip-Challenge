@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 // Progress Model
 struct Progress {
     var userId: Int
