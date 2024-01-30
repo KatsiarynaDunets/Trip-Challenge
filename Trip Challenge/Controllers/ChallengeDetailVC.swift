@@ -5,11 +5,10 @@
 //  Created by Kate on 03/12/2023.
 //
 
-import UIKit
 import CoreLocation
+import UIKit
 
 class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
-    
     var challenge: Challenge? // Challenge - модель данных
     private let challengeImageView = UIImageView()
     private let gradientLayer = CAGradientLayer()
@@ -24,26 +23,25 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
     private let maxRating = 5
     private let locationManager = CLLocationManager()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        configureView()
+        configureLocationManager()
+    }
 
-       override func viewDidLoad() {
-           super.viewDidLoad()
-           setupLayout()
-           configureView()
-           configureLocationManager()
-       }
-
-       private func configureLocationManager() {
-           locationManager.delegate = self
-           locationManager.desiredAccuracy = kCLLocationAccuracyBest
-           locationManager.requestWhenInUseAuthorization()
-           locationManager.startUpdatingLocation()
-       }
+    private func configureLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
 
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //           updateDistanceToChallenge()
 //       }
 
-//private func updateDistanceToChallenge() {
+    // private func updateDistanceToChallenge() {
 //           guard let userLocation = locationManager.location, let challenge = challenge else { return }
 //           let distance = challenge.calculateDistanceToNearestPoint(from: userLocation)
 //           if let distance = distance {
@@ -115,7 +113,7 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
         for (index, star) in ratingStars.enumerated() {
             star.image = index < rating ? UIImage(named: "star_filled") : UIImage(named: "star_empty") // Замените на ваши изображения
         }
-     
+
 //        challenge?.rating = poiRating
         // ... Добавить distanceLabel, pointsLabel, ratingStarsView и descriptionLabel
 
@@ -158,10 +156,9 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
         descriptionLabel.text = challenge.challengeDescription
 
         // Установка изображения
-    
-        let image = UIImage(data: challenge.challengeImage)
-           challengeImageView.image = image
 
+        let image = UIImage(data: challenge.challengeImage)
+        challengeImageView.image = image
 
         // есть метод для расчета расстояния до челленджа
         // distanceLabel.text = "Расстояние: \(расчетное_расстояние)"
@@ -178,7 +175,7 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
     // Настройка рейтинга звезд (ratingStarsView) в зависимости от рейтинга challenge
 }
 
-//private func acceptChallenge() {
+// private func acceptChallenge() {
 //    guard var challenge = challenge else { return }
 //    // Пример: challenge.isAccepted = true
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -187,9 +184,9 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
 //    } catch {
 //        print("Ошибка сохранения изменений: \(error)")
 //    }
-//}
+// }
 //
-//class ChallengesViewController: UIViewController {
+// class ChallengesViewController: UIViewController {
 //
 //    var challenges: [Challenge] = []
 //
@@ -214,5 +211,3 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
 //        // Обновить UI для отмеченной точки интереса...
 //    }
 //
-    
-

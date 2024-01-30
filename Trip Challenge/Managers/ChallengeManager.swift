@@ -16,8 +16,8 @@ class ChallengeManager {
         self.context = context
     }
 
-    func getAllChallenges() -> Result<[Challenge], Error> {
-        let request: NSFetchRequest<Challenge> = NSFetchRequest<Challenge>(entityName: "Challenge")
+    func getAllChallenges() -> Result<[Challenges], Error> {
+        let request: NSFetchRequest<Challenge> = NSFetchRequest<Challenge>(entityName: "Challenges")
         do {
             let challenges = try context.fetch(request)
             return .success(challenges)

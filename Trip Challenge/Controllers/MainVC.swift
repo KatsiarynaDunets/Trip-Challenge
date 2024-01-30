@@ -10,49 +10,48 @@ import CoreLocation
 import MapKit
 import UIKit
 
-class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var trendingChallengesCollectionView: UICollectionView!
     @IBOutlet var nearYouChallengesCollectionView: UICollectionView!
     @IBOutlet var citySelectionMenu: UIButton!
     
-    var trendingChallenges: [Challenge] = []
-    var nearYouChallenges: [Challenge] = []
+    var trendingChallenges: [Challenges] = []
+    var nearYouChallenges: [Challenges] = []
     var userCoordinate: CLLocationCoordinate2D?
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupMapView()
-        fetchChallenges()
-       
-        
-//        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization() // Запрос разрешения на использование геолокации
+            super.viewDidLoad()
+            
+            setupMapView()
+            fetchChallenges()
+           
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-        // Start updating location
-        locationManager.startUpdatingLocation()
-    
-        // Настройка collection views
-        trendingChallengesCollectionView.delegate = self
-        trendingChallengesCollectionView.dataSource = self
+            locationManager.startUpdatingLocation()
         
-        nearYouChallengesCollectionView.delegate = self
-        nearYouChallengesCollectionView.dataSource = self
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            print("Текущее местоположение: \(location)")
+            trendingChallengesCollectionView.delegate = self
+            trendingChallengesCollectionView.dataSource = self
+            
+            nearYouChallengesCollectionView.delegate = self
+            nearYouChallengesCollectionView.dataSource = self
         }
-    }
+        
+        // Используйте методы CLLocationManagerDelegate для обновления местоположения пользователя
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            if let location = locations.last {
+                userCoordinate = location.coordinate
+                fetchChallenges()
+            }
+        }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Ошибка получения местоположения: \(error)")
-    }
+        // Обработка ошибок местоположения
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("Ошибка получения местоположения: \(error)")
+        }
     
     // Настройка карты
     private func setupMapView() {
@@ -73,23 +72,32 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
     // Загрузка challenges
     private func fetchChallenges() {
         let context = self.getContext()
-        let request = NSFetchRequest<Challenge>(entityName: "Challenge")
+        let request: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        
         do {
             let challenges = try context.fetch(request)
 
-            // Определите координаты пользователя (возможно, используя CLLocationManager или другой способ)
-            guard let userCoordinate = locationManager.location?.coordinate else {
-                // Handle the case when user location is not available
-                return
+            // Если местоположение пользователя доступно, используйте его для фильтрации ближайших челленджей
+            if let userCoordinate = locationManager.location?.coordinate {
+                // Фильтрация челленджей по близости к текущему местоположению пользователя
+                nearYouChallenges = challenges.filter { challenge in
+                    let challengeLocation = CLLocation(latitude: challenge.challengeLat, longitude: challenge.challengeLon)
+                    return challengeLocation.distance(from: CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)) < 10000 // например, в радиусе 10 км
+                }
+
+                // Сортировка ближайших челленджей по расстоянию
+                nearYouChallenges.sort { (challenge1, challenge2) -> Bool in
+                    let loc1 = CLLocation(latitude: challenge1.challengeLat, longitude: challenge1.challengeLon)
+                    let loc2 = CLLocation(latitude: challenge2.challengeLat, longitude: challenge2.challengeLon)
+                    return loc1.distance(from: CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)) <
+                        loc2.distance(from: CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude))
+                }
+            } else {
+                nearYouChallenges = []
             }
 
-            // Разделите challenges на ближайшие и популярные
-            trendingChallenges = Array(challenges.prefix(3)) // Выберите 3 последних челленджа
-            nearYouChallenges = challenges.sorted(by: {
-                let distanceToFirst = $0.calculateDistance(from: CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude))
-                let distanceToSecond = $1.calculateDistance(from: CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude))
-                return distanceToFirst < distanceToSecond
-            })
+            // Выборка трендовых челленджей, например, на основе рейтинга или других критериев
+            trendingChallenges = challenges.sorted { $0.challengeRating > $1.challengeRating }.prefix(3) // Топ-3 челленджа по рейтингу
 
             DispatchQueue.main.async {
                 self.trendingChallengesCollectionView.reloadData()
@@ -97,9 +105,16 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
             }
         } catch {
             print("Ошибка при загрузке данных: \(error)")
-            // Показать сообщение об ошибке пользователю
+            // Обработка ошибок и возможное отображение сообщения пользователю
         }
     }
+
+    // Вспомогательный метод для получения контекста Core Data
+    private func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+
 
     // Получение контекста Core Data
     private func getContext() -> NSManagedObjectContext {
@@ -111,7 +126,7 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showChallengeDetail" {
-            if let detailVC = segue.destination as? ChallengeDetailVC, let challenge = sender as? Challenge {
+            if let detailVC = segue.destination as? ChallengeDetailVC, let challenge = sender as? Challenges {
                 detailVC.challenge = challenge
             }
         }
@@ -148,7 +163,7 @@ class MainVC: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Обработка нажатия на карточку
-        let selectedChallenge: Challenge
+        let selectedChallenge: Challenges
         if collectionView == trendingChallengesCollectionView {
             selectedChallenge = trendingChallenges[indexPath.item]
         } else {

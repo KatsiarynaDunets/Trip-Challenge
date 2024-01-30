@@ -16,23 +16,23 @@ class NavigationManager: NSObject, MKMapViewDelegate {
         mapView.delegate = self
     }
 
-//    func showChallengeLocation(challenge: Challenge) -> Result<Void, AppError> {
-//        guard let location = getLocationFromString(challenge.location) else {
-//            return .failure(.invalidLocation)
-//        }
-//
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = location
-//     annotation.title = challenge.title
-//        annotation.subtitle = challenge.description
-//        mapView.addAnnotation(annotation)
+    func showChallengeLocation(challenge: Challenge) -> Result<Void, AppError> {
+        guard let location = getLocationFromString(challenge.location) else {
+            return .failure(.invalidLocation)
+        }
 
-        // Центрирование карты на местоположении челленджа
-//        let region = MKCoordinateRegion(center: location, latitudinalMeters: 500, longitudinalMeters: 500)
-//        mapView.setRegion(region, animated: true)
-//
-//        return .success(())
-//    }
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = challenge.title
+        annotation.subtitle = challenge.description
+        mapView.addAnnotation(annotation)
+
+//         Центрирование карты на местоположении челленджа
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.setRegion(region, animated: true)
+
+        return .success(())
+    }
 
     private func getLocationFromString(_ locationString: String) -> CLLocationCoordinate2D? {
         let coordinates = locationString.components(separatedBy: ",").compactMap { Double($0.trimmingCharacters(in: .whitespaces)) }
@@ -46,6 +46,6 @@ class NavigationManager: NSObject, MKMapViewDelegate {
 // Пример использования с обработкой ошибок
 let mapView = MKMapView()
 let navigationManager = NavigationManager(mapView: mapView)
-//if case let Result.failure(error) = navigationManager.showChallengeLocation(challenge: challenge1) {
+// if case let Result.failure(error) = navigationManager.showChallengeLocation(challenge: challenge1) {
 //    print("Error: \(error)")
-//}
+// }

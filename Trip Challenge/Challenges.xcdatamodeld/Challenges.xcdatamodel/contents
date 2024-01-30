@@ -6,14 +6,14 @@
         <attribute name="challengeDescription" optional="YES" attributeType="String"/>
         <attribute name="challengeID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="challengeImage" optional="YES" attributeType="Binary"/>
-        <attribute name="challengeLat" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeLat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="challengeLocation" optional="YES" attributeType="String"/>
-        <attribute name="challengeLon" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="challengeNumberOfPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="challengeLon" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="challengeNumberOfPoints" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="challengeRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="challengeStatus" optional="YES" attributeType="String"/>
         <attribute name="challengeTitle" optional="YES" attributeType="String"/>
-        <relationship name="pointsOfInterest" optional="YES" toMany="YES" minCount="1" maxCount="10" deletionRule="Nullify" destinationEntity="PointsOfInterest"/>
+        <relationship name="pointsOfInterest" optional="YES" toMany="YES" minCount="2" deletionRule="Nullify" destinationEntity="PointsOfInterest"/>
     </entity>
     <entity name="PointsOfInterest" representedClassName="PointsOfInterest" syncable="YES" codeGenerationType="class">
         <attribute name="poiCategory" optional="YES" attributeType="String"/>
