@@ -13,7 +13,7 @@ public class Challenge: NSManagedObject {
     @NSManaged public var challengeAverageRating: Double
     @NSManaged public var challengeCategory: String
     @NSManaged public var challengeDescription: String
-    @NSManaged public var challengeId: Int16
+    @NSManaged public var challengeId: Int32
     @NSManaged public var challengeImage: Data
     @NSManaged public var challengeLat: Double
     @NSManaged public var challengeLocation: String
@@ -34,42 +34,18 @@ extension Challenge {
         return challengeLocation.distance(from: userLocation)
     }
     
-    func calculateDistanceToNearestPoint(from userLocation: CLLocation) -> CLLocationDistance? {
-            //у Challenge есть связь с PointsOfInterest
-            // у PointsOfInterest есть свойство 'coordinate'
-            guard let pointsOfInterest = self.pointsOfInterest as? Set<PointsOfInterest>, !pointsOfInterest.isEmpty else {
-                return nil
-            }
-
-            let distances = pointsOfInterest.map { poi in
-                CLLocation(latitude: poi.latitude, longitude: poi.longitude).distance(from: userLocation)
-            }
-
-            return distances.min()
-        }
-    
-}
-
-//    struct Challenge {
-//    var id: Int
-//    var title: String
-//    var location: String
-//    var description: String
-//    let coordinate: CLLocationCoordinate2D //coordinate не изменяется после инициализации
+    //у Challenge есть связь с PointsOfInterest
+    //у PointsOfInterest есть свойство 'coordinate'
+//        func calculateDistanceToNearestPoint(from userLocation: CLLocation) -> CLLocationDistance? {
+//            guard let pointsOfInterest = self.pointsOfInterest as? Set<PointsOfInterest>, !pointsOfInterest.isEmpty else {
+//                return nil
+//            }
 //
-//    init(id: Int, title: String, location: String, description: String, coordinate: CLLocationCoordinate2D) {
-//        self.id = id
-//        self.title = title
-//        self.location = location
-//        self.description = description
-//        self.coordinate = coordinate
-//    }
-//}
-
-//extension Challenge {
-//    func calculateDistance(from userLocation: CLLocation) -> CLLocationDistance {
-//        let challengeLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
-//        return challengeLocation.distance(from: userLocation)
-//    }
-//}
+//            let distances = pointsOfInterest.map { poi in
+//                CLLocation(latitude: poi.latitude, longitude: poi.longitude).distance(from: userLocation)
+//            }
+//
+//            return distances.min()
+//        }
+}
 

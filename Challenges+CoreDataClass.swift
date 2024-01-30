@@ -6,10 +6,12 @@
 //
 //
 
-import Foundation
-import CoreData
+//import Foundation
+//import CoreData
+//
+//@objc(Challenges)
+//public class Challenges: NSManagedObject {
+//
+//}
 
-@objc(Challenges)
-public class Challenges: NSManagedObject {
 
-}

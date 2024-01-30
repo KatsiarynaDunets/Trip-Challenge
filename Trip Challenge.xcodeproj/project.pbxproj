@@ -196,7 +196,8 @@
 				523DF4B92B0AAD8900F312B8 /* Achievement.swift */,
 				523DF4BB2B0AADA000F312B8 /* Progress.swift */,
 				5285B5DE2B1E7871006FA29E /* Promo.swift */,
-				5285B5E02B1E7AFD006FA29E /* Classes */,
+				5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */,
+				5285B5E02B1E7AFD006FA29E /* Managers */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,7 +235,7 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		5285B5E02B1E7AFD006FA29E /* Classes */ = {
+		5285B5E02B1E7AFD006FA29E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */,
@@ -242,9 +243,8 @@
 				523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */,
 				523DF4BF2B0AAE8E00F312B8 /* ProfileManager.swift */,
 				523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */,
-				5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */,
 			);
-			path = Classes;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -9,8 +9,8 @@ import UIKit
 import CoreLocation
 
 class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
+    
     var challenge: Challenge? // Challenge - модель данных
-
     private let challengeImageView = UIImageView()
     private let gradientLayer = CAGradientLayer()
     private let titleLabel = UILabel()
@@ -39,20 +39,20 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
            locationManager.startUpdatingLocation()
        }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-           updateDistanceToChallenge()
-       }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//           updateDistanceToChallenge()
+//       }
 
-    private func updateDistanceToChallenge() {
-           guard let userLocation = locationManager.location, let challenge = challenge else { return }
-           let distance = challenge.calculateDistanceToNearestPoint(from: userLocation)
-           if let distance = distance {
-               print("\(distance) m")
-               distanceLabel.text = "Расстояние: \(distance) м"
-           } else {
-               print("Точки маршрута отсутствуют")
-           }
-       }
+//private func updateDistanceToChallenge() {
+//           guard let userLocation = locationManager.location, let challenge = challenge else { return }
+//           let distance = challenge.calculateDistanceToNearestPoint(from: userLocation)
+//           if let distance = distance {
+//               print("\(distance) m")
+//               distanceLabel.text = "Расстояние: \(distance) м"
+//           } else {
+//               print("Точки маршрута отсутствуют")
+//           }
+//       }
 
     private func setupLayout() {
         // Настройка challengeImageView
@@ -178,39 +178,41 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
     // Настройка рейтинга звезд (ratingStarsView) в зависимости от рейтинга challenge
 }
 
-private func acceptChallenge() {
-    guard let challenge = self.challenge else { return }
-    // Пример: challenge.isAccepted = true
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    do {
-        try context.save()
-    } catch {
-        print("Ошибка сохранения изменений: \(error)")
-    }
-}
-
-class ChallengesViewController: UIViewController {
+//private func acceptChallenge() {
+//    guard var challenge = challenge else { return }
+//    // Пример: challenge.isAccepted = true
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    do {
+//        try context.save()
+//    } catch {
+//        print("Ошибка сохранения изменений: \(error)")
+//    }
+//}
+//
+//class ChallengesViewController: UIViewController {
+//
+//    var challenges: [Challenge] = []
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        challenges = DataManager.shared.fetchAllChallenges()
+//        // Отобразить челленджи...
+//    }
+//
+//    func showChallengeDetails(_ challenge: Challenge) {
+//        let pois = DataManager.shared.fetchPointsOfInterest(for: challenge)
+//        // Показать детали челленджа и точек интереса...
+//    }
+//
+//    func startChallenge(_ challenge: Challenge) {
+//        DataManager.shared.activateChallenge(challenge)
+//        // Обновить UI и начать челлендж...
+//    }
+//
+//    func markPOIVisited(_ poi: PointsOfInterest) {
+//        DataManager.shared.markPointOfInterestAsVisited(poi)
+//        // Обновить UI для отмеченной точки интереса...
+//    }
+//
     
-    var challenges: [Challenge] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        challenges = DataManager.shared.fetchAllChallenges()
-        // Отобразить челленджи...
-    }
-
-    func showChallengeDetails(_ challenge: Challenge) {
-        let pois = DataManager.shared.fetchPointsOfInterest(for: challenge)
-        // Показать детали челленджа и точек интереса...
-    }
-
-    func startChallenge(_ challenge: Challenge) {
-        DataManager.shared.activateChallenge(challenge)
-        // Обновить UI и начать челлендж...
-    }
-
-    func markPOIVisited(_ poi: PointsOfInterest) {
-        DataManager.shared.markPointOfInterestAsVisited(poi)
-        // Обновить UI для отмеченной точки интереса...
-    }
-}

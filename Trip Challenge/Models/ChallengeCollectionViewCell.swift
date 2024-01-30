@@ -15,8 +15,8 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
 
     func configure(with challenge: Challenge) {
         // Настройка элементов ячейки на основе данных о челлендже
-        titleLabel.text = challenge.title
-        descriptionLabel.text = challenge.description
+        titleLabel.text = challenge.challengeTitle
+        descriptionLabel.text = challenge.challengeDescription
         
         // Загрузка изображения
         
