@@ -2,7 +2,7 @@
 //  PointsOfInterest+CoreDataClass.swift
 //  Trip Challenge
 //
-//  Created by Kate on 24/01/2024.
+//  Created by Kate on 30/01/2024.
 //
 //
 

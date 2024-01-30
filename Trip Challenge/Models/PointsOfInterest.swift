@@ -5,30 +5,48 @@
 //  Created by Kate on 21/01/2024.
 //
 
+import Foundation
 import CoreData
-import CoreLocation
+import MapKit
 
-@objc(PointsOfInterest)
-public class PointsOfInterest: NSManagedObject {
-   
-    @NSManaged public var poiCategory: String
-    @NSManaged public var poiDescription: String
-    @NSManaged public var poiID: Int16
-    @NSManaged public var poiImage: Data
+@objc(PointOfInterest)
+public class PointOfInterest: NSManagedObject {
+    @NSManaged public var poiCategory: String?
+    @NSManaged public var poiDescription: String?
+    @NSManaged public var poiID: Int32
+    @NSManaged public var poiImage: Data?
     @NSManaged public var poiLat: Double
-    @NSManaged public var poiLocation: String
+    @NSManaged public var poiLocation: String?
     @NSManaged public var poiLon: Double
     @NSManaged public var poiNumber: Int16
     @NSManaged public var poiPromo: Bool
-    @NSManaged public var poiStatus: String
-    @NSManaged public var poiTitle: String
-
-    var coordinate: CLLocationCoordinate2D {
-            CLLocationCoordinate2D(latitude: poiLat, longitude: poiLon)
-        }
-
-        func calculateDistance(from userLocation: CLLocation) -> CLLocationDistance {
-            let poiLocation = CLLocation(latitude: self.poiLat, longitude: self.poiLon)
-            return poiLocation.distance(from: userLocation)
-        }
+    @NSManaged public var poiStatus: String?
+    @NSManaged public var poiTitle: String?
+    @NSManaged public var challenges: Challenges?
     }
+
+// Расширение для удобства работы с данными
+extension PointOfInterest {
+    // Функция для создания новой точки интереса
+    static func createPointOfInterest(in context: NSManagedObjectContext, id: Int32, title: String, description: String, category: String, latitude: Double, longitude: Double, image: Data, promo: Bool) -> PointOfInterest {
+        let pointOfInterest = PointOfInterest(context: context)
+        pointOfInterest.poiID = id
+        pointOfInterest.poiTitle = title
+        pointOfInterest.poiDescription = description
+        pointOfInterest.poiCategory = category
+        pointOfInterest.poiLat = latitude
+        pointOfInterest.poiLon = longitude
+        pointOfInterest.poiImage = image
+        pointOfInterest.poiPromo = promo
+        return pointOfInterest
+    }
+
+    // Метод для получения связанных челленджей
+    func getAssociatedChallenges() -> [Challenges]? {
+        return challenges?.allObjects as? [Challenges]
+    }
+}
+
+
+//
+//    }

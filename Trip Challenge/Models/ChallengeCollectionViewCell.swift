@@ -22,9 +22,9 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
         
     }
     
-//    let layout = UICollectionViewFlowLayout()
-//    layout.itemSize = CGSize(width: 150, height: 150)
-//    layout.minimumInteritemSpacing = 10
-//    layout.minimumLineSpacing = 10
-//    yourCollectionView.collectionViewLayout = layout
+    let layout = UICollectionViewFlowLayout()
+    func layout.itemSize = CGSize(width: 150, height: 150)
+    layout.minimumInteritemSpacing = 10
+    layout.minimumLineSpacing = 10
+    yourCollectionView.collectionViewLayout = layout
 }
