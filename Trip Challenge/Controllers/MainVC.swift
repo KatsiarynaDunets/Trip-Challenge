@@ -17,41 +17,39 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     @IBOutlet var citySelectionMenu: UIButton!
     
     var trendingChallenges: [Challenges] = []
-    var nearYouChallenges: [Challenges] = []
-    var userCoordinate: CLLocationCoordinate2D?
-    var locationManager = CLLocationManager()
-    
-    override func viewDidLoad() {
+        var nearYouChallenges: [Challenges] = []
+        var userCoordinate: CLLocationCoordinate2D?
+        var locationManager = CLLocationManager()
+        
+        override func viewDidLoad() {
             super.viewDidLoad()
             
             setupMapView()
             fetchChallenges()
-           
+
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-
             locationManager.startUpdatingLocation()
-        
+
             trendingChallengesCollectionView.delegate = self
             trendingChallengesCollectionView.dataSource = self
-            
             nearYouChallengesCollectionView.delegate = self
             nearYouChallengesCollectionView.dataSource = self
         }
+    
         
-        // Используйте методы CLLocationManagerDelegate для обновления местоположения пользователя
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            if let location = locations.last {
-                userCoordinate = location.coordinate
-                fetchChallenges()
-            }
-        }
+    // MARK: CLLocationManagerDelegate Methods
+      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+          if let location = locations.last {
+              userCoordinate = location.coordinate
+              fetchChallenges()
+          }
+      }
 
-        // Обработка ошибок местоположения
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            print("Ошибка получения местоположения: \(error)")
-        }
+      func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+          print("Ошибка получения местоположения: \(error)")
+      }
     
     // Настройка карты
     private func setupMapView() {
@@ -111,22 +109,15 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
 
     // Вспомогательный метод для получения контекста Core Data
     private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-
-
-    // Получение контекста Core Data
-    private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            return appDelegate.persistentContainer.viewContext
+        }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showChallengeDetail" {
-            if let detailVC = segue.destination as? ChallengeDetailVC, let challenge = sender as? Challenges {
+            if let detailVC = segue.destination as? ChallengeDetailVC, let challenges = sender as? Challenges {
                 detailVC.challenge = challenge
             }
         }
