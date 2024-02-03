@@ -13,7 +13,8 @@ class PromoCell: UICollectionViewCell {
     private let descriptionLabel = UILabel()
     private let promoButton = UIButton()
     private let backgroundImageView = UIImageView()
-
+    private var isPromoActivated = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -78,13 +79,25 @@ class PromoCell: UICollectionViewCell {
     }
 
     @objc private func promoButtonTapped() {
-        //  promo button tap
-    }
-
+            isPromoActivated.toggle() // Переключаем состояние активации
+            updateUIForPromoState()
+        }
+    private func updateUIForPromoState() {
+            if isPromoActivated {
+                contentView.backgroundColor = .gray
+                promoButton.setTitle("Купон активирован", for: .normal)
+                promoButton.setImage(UIImage(named: "checkmarkIcon"), for: .normal) // Иконка галочки
+            } else {
+                contentView.backgroundColor = .systemMint
+                promoButton.setTitle("View Promo", for: .normal)
+                promoButton.setImage(nil, for: .normal)
+            }
+        }
     func configure(with promo: Promo) {
-        titleLabel.text = promo.title
-        descriptionLabel.text = promo.description
-        // Set the background image for the cell
-        // backgroundImageView.image = UIImage(named: promo.imageName) // Uncomment and use if you have an image name in the Promo model
-    }
-}
+           titleLabel.text = promo.title
+           descriptionLabel.text = promo.description
+           // ... Остальная конфигурация ...
+           isPromoActivated = false // Сброс состояния при конфигурации
+           updateUIForPromoState()
+       }
+   }

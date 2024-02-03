@@ -40,11 +40,11 @@
                                         <color key="tintColor" systemColor="systemTealColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Start">
-                                            <color key="baseBackgroundColor" systemColor="systemTealColor"/>
+                                            <color key="baseBackgroundColor" systemColor="systemMintColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="startBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lxG-RI-9xr"/>
-                                            <segue destination="Wm1-gj-He8" kind="show" identifier="goToMain" id="Wf1-JM-xFa"/>
+                                            <segue destination="Vgg-Rq-sAh" kind="show" id="AkO-Ac-XrT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -109,21 +109,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJt-6q-8VA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2773" y="-42"/>
+            <point key="canvasLocation" x="2010" y="-42"/>
         </scene>
         <!--Home-->
         <scene sceneID="nAf-Yj-wys">
             <objects>
                 <viewController id="Wm1-gj-He8" customClass="MainVC" customModule="Trip_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mrE-ow-QeR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2f-Da-axt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJm-Ft-fgU">
-                                        <rect key="frame" x="15" y="39" width="290" height="470"/>
+                                        <rect key="frame" x="15" y="39" width="290" height="490"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -139,7 +139,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="XH0-uJ-OZb"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7lS-7g-qwI">
-                                <rect key="frame" x="25" y="10" width="270" height="479"/>
+                                <rect key="frame" x="25" y="30" width="270" height="479"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's pick a trip challenge for you and explore " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fus-ie-p8Z">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="41.5"/>
@@ -295,7 +295,7 @@
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S7p-yZ-xMx">
                                                 <rect key="frame" x="276" y="-39" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jri-4g-bhT">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Jri-4g-bhT">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </collectionViewCellContentView>
@@ -333,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNe-bi-gdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="-368"/>
+            <point key="canvasLocation" x="2010" y="-730"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vp2-9U-NT0">
@@ -387,7 +387,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yn7-wS-jCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3133" y="775"/>
+            <point key="canvasLocation" x="1560" y="1440"/>
         </scene>
         <!--Promo-->
         <scene sceneID="DbZ-9K-YcW">
@@ -447,7 +447,7 @@ promo &amp; discounts</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHt-fM-n9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462.5" y="776.4084507042254"/>
+            <point key="canvasLocation" x="2010" y="752"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FfN-ir-Q7W">
@@ -466,12 +466,11 @@ promo &amp; discounts</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmq-QS-KXy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2286" y="776"/>
+            <point key="canvasLocation" x="823" y="1440"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="dtg-uU-b6D"/>
-        <segue reference="Wf1-JM-xFa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
@@ -480,6 +479,9 @@ promo &amp; discounts</string>
         <image name="safari" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

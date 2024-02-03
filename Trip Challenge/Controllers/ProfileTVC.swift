@@ -1,9 +1,9 @@
-//
-//  ProfileTVC.swift
-//  Trip Challenge
-//
-//  Created by Kate on 03/12/2023.
-//
+////
+////  ProfileTVC.swift
+////  Trip Challenge
+////
+////  Created by Kate on 03/12/2023.
+////
 
 import UIKit
 
@@ -57,7 +57,7 @@ class ProfileTVC: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

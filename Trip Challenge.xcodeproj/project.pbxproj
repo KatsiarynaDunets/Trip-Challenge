@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520A99252B6E891A004155D2 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A99242B6E891A004155D2 /* ChallengeModel.swift */; };
+		520A99282B6E8A04004155D2 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 520A99272B6E8A04004155D2 /* Realm */; };
+		520A992A2B6E8A04004155D2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 520A99292B6E8A04004155D2 /* RealmSwift */; };
+		520A992C2B6E8C59004155D2 /* POIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A992B2B6E8C59004155D2 /* POIModel.swift */; };
+		520A992E2B6EF54D004155D2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520A992D2B6EF54D004155D2 /* TabBarController.swift */; };
 		523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47A2B02C29100F312B8 /* AppDelegate.swift */; };
 		523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47C2B02C29100F312B8 /* SceneDelegate.swift */; };
 		523DF4822B02C29100F312B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523DF4802B02C29100F312B8 /* Main.storyboard */; };
-		523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4832B02C29100F312B8 /* Trip_Challenge.xcdatamodeld */; };
 		523DF4872B02C29200F312B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 523DF4862B02C29200F312B8 /* Assets.xcassets */; };
 		523DF48A2B02C29200F312B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523DF4882B02C29200F312B8 /* LaunchScreen.storyboard */; };
 		523DF4952B02C29200F312B8 /* Trip_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4942B02C29200F312B8 /* Trip_ChallengeTests.swift */; };
@@ -25,15 +29,11 @@
 		523DF4BE2B0AAE6100F312B8 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */; };
 		523DF4C02B0AAE8E00F312B8 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4BF2B0AAE8E00F312B8 /* ProfileManager.swift */; };
 		523DF4C22B0AAEE100F312B8 /* ProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */; };
-		523DF4C52B0AB03000F312B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 523DF4C42B0AB03000F312B8 /* Alamofire */; };
 		523DF4C72B0AB40000F312B8 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C62B0AB40000F312B8 /* AppError.swift */; };
 		523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4C82B0AB5A600F312B8 /* MainVC.swift */; };
 		523DF4CB2B0AB73600F312B8 /* TrendingChallengesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */; };
-		5266C4E82B69A857005D01CE /* Challenges+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C4E62B69A857005D01CE /* Challenges+CoreDataClass.swift */; };
-		5266C4E92B69A857005D01CE /* Challenges+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C4E72B69A857005D01CE /* Challenges+CoreDataProperties.swift */; };
-		5266C4EC2B69A8C3005D01CE /* PointsOfInterest+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C4EA2B69A8C3005D01CE /* PointsOfInterest+CoreDataClass.swift */; };
-		5266C4ED2B69A8C3005D01CE /* PointsOfInterest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C4EB2B69A8C3005D01CE /* PointsOfInterest+CoreDataProperties.swift */; };
 		5266C4EF2B6AE968005D01CE /* POIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C4EE2B6AE968005D01CE /* POIVC.swift */; };
+		5266C4F12B6AF8CD005D01CE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C4F02B6AF8CD005D01CE /* LocationManager.swift */; };
 		5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5D62B1D32CC006FA29E /* MapVC.swift */; };
 		5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5D82B1D332D006FA29E /* ProfileTVC.swift */; };
 		5285B5DB2B1D3372006FA29E /* PromoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DA2B1D3372006FA29E /* PromoVC.swift */; };
@@ -41,9 +41,8 @@
 		5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5DE2B1E7871006FA29E /* Promo.swift */; };
 		5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B5E12B1E7B3B006FA29E /* PromoCell.swift */; };
 		5285B7742B548C0B006FA29E /* ChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */; };
-		5285B7772B59D7E4006FA29E /* Challenges.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5285B7752B59D7E4006FA29E /* Challenges.xcdatamodeld */; };
 		5285B7792B5DBDB1006FA29E /* PointsOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B7782B5DBDB1006FA29E /* PointsOfInterest.swift */; };
-		5285B77B2B61A3BB006FA29E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B77A2B61A3BB006FA29E /* DataManager.swift */; };
+		5285B77B2B61A3BB006FA29E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5285B77A2B61A3BB006FA29E /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,11 +63,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520A99242B6E891A004155D2 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
+		520A992B2B6E8C59004155D2 /* POIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIModel.swift; sourceTree = "<group>"; };
+		520A992D2B6EF54D004155D2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		523DF4772B02C29100F312B8 /* Trip Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		523DF47A2B02C29100F312B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		523DF47C2B02C29100F312B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		523DF4812B02C29100F312B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		523DF4842B02C29100F312B8 /* Trip_Challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trip_Challenge.xcdatamodel; sourceTree = "<group>"; };
 		523DF4862B02C29200F312B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		523DF4892B02C29200F312B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		523DF48B2B02C29200F312B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,11 +90,8 @@
 		523DF4C62B0AB40000F312B8 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		523DF4C82B0AB5A600F312B8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingChallengesTVC.swift; sourceTree = "<group>"; };
-		5266C4E62B69A857005D01CE /* Challenges+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenges+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5266C4E72B69A857005D01CE /* Challenges+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenges+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5266C4EA2B69A8C3005D01CE /* PointsOfInterest+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointsOfInterest+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5266C4EB2B69A8C3005D01CE /* PointsOfInterest+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointsOfInterest+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5266C4EE2B6AE968005D01CE /* POIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIVC.swift; sourceTree = "<group>"; };
+		5266C4F02B6AF8CD005D01CE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5285B5D62B1D32CC006FA29E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		5285B5D82B1D332D006FA29E /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
 		5285B5DA2B1D3372006FA29E /* PromoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoVC.swift; sourceTree = "<group>"; };
@@ -101,9 +99,8 @@
 		5285B5DE2B1E7871006FA29E /* Promo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promo.swift; sourceTree = "<group>"; };
 		5285B5E12B1E7B3B006FA29E /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 		5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
-		5285B7762B59D7E4006FA29E /* Challenges.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenges.xcdatamodel; sourceTree = "<group>"; };
 		5285B7782B5DBDB1006FA29E /* PointsOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsOfInterest.swift; sourceTree = "<group>"; };
-		5285B77A2B61A3BB006FA29E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		5285B77A2B61A3BB006FA29E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				523DF4C52B0AB03000F312B8 /* Alamofire in Frameworks */,
+				520A992A2B6E8A04004155D2 /* RealmSwift in Frameworks */,
+				520A99282B6E8A04004155D2 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,10 +133,6 @@
 		523DF46E2B02C29100F312B8 = {
 			isa = PBXGroup;
 			children = (
-				5266C4EA2B69A8C3005D01CE /* PointsOfInterest+CoreDataClass.swift */,
-				5266C4EB2B69A8C3005D01CE /* PointsOfInterest+CoreDataProperties.swift */,
-				5266C4E62B69A857005D01CE /* Challenges+CoreDataClass.swift */,
-				5266C4E72B69A857005D01CE /* Challenges+CoreDataProperties.swift */,
 				523DF4792B02C29100F312B8 /* Trip Challenge */,
 				523DF4932B02C29200F312B8 /* Trip ChallengeTests */,
 				523DF49D2B02C29200F312B8 /* Trip ChallengeUITests */,
@@ -165,8 +159,6 @@
 				5285B5E02B1E7AFD006FA29E /* Managers */,
 				523DF4862B02C29200F312B8 /* Assets.xcassets */,
 				523DF48B2B02C29200F312B8 /* Info.plist */,
-				523DF4832B02C29100F312B8 /* Trip_Challenge.xcdatamodeld */,
-				5285B7752B59D7E4006FA29E /* Challenges.xcdatamodeld */,
 				523DF4AF2B02C44000F312B8 /* Delegates */,
 			);
 			path = "Trip Challenge";
@@ -200,6 +192,8 @@
 				523DF4BB2B0AADA000F312B8 /* Progress.swift */,
 				5285B5DE2B1E7871006FA29E /* Promo.swift */,
 				5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */,
+				520A99242B6E891A004155D2 /* ChallengeModel.swift */,
+				520A992B2B6E8C59004155D2 /* POIModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +219,7 @@
 		523DF4B02B02C44E00F312B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				520A992D2B6EF54D004155D2 /* TabBarController.swift */,
 				523DF4B32B02D00500F312B8 /* WelcomeVC.swift */,
 				523DF4C82B0AB5A600F312B8 /* MainVC.swift */,
 				523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */,
@@ -241,8 +236,9 @@
 		5285B5E02B1E7AFD006FA29E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5285B77A2B61A3BB006FA29E /* DatabaseManager.swift */,
+				5266C4F02B6AF8CD005D01CE /* LocationManager.swift */,
 				523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */,
-				5285B77A2B61A3BB006FA29E /* DataManager.swift */,
 				523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */,
 				523DF4BF2B0AAE8E00F312B8 /* ProfileManager.swift */,
 				523DF4C12B0AAEE100F312B8 /* ProgressManager.swift */,
@@ -267,7 +263,8 @@
 			);
 			name = "Trip Challenge";
 			packageProductDependencies = (
-				523DF4C42B0AB03000F312B8 /* Alamofire */,
+				520A99272B6E8A04004155D2 /* Realm */,
+				520A99292B6E8A04004155D2 /* RealmSwift */,
 			);
 			productName = "Trip Challenge";
 			productReference = 523DF4772B02C29100F312B8 /* Trip Challenge.app */;
@@ -342,7 +339,7 @@
 			);
 			mainGroup = 523DF46E2B02C29100F312B8;
 			packageReferences = (
-				523DF4C32B0AB03000F312B8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				520A99262B6E8A04004155D2 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 523DF4782B02C29100F312B8 /* Products */;
 			projectDirPath = "";
@@ -387,34 +384,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5266C4ED2B69A8C3005D01CE /* PointsOfInterest+CoreDataProperties.swift in Sources */,
 				523DF4BC2B0AADA000F312B8 /* Progress.swift in Sources */,
 				5285B7792B5DBDB1006FA29E /* PointsOfInterest.swift in Sources */,
+				520A992C2B6E8C59004155D2 /* POIModel.swift in Sources */,
 				523DF4B82B0AAD3B00F312B8 /* Challenge.swift in Sources */,
+				520A99252B6E891A004155D2 /* ChallengeModel.swift in Sources */,
 				523DF4B22B02CF0500F312B8 /* ChallengeManager.swift in Sources */,
 				523DF4C02B0AAE8E00F312B8 /* ProfileManager.swift in Sources */,
 				523DF4C72B0AB40000F312B8 /* AppError.swift in Sources */,
+				5266C4F12B6AF8CD005D01CE /* LocationManager.swift in Sources */,
 				523DF4C22B0AAEE100F312B8 /* ProgressManager.swift in Sources */,
 				5285B5DB2B1D3372006FA29E /* PromoVC.swift in Sources */,
 				523DF4CB2B0AB73600F312B8 /* TrendingChallengesTVC.swift in Sources */,
 				523DF4B62B0AAD1800F312B8 /* User.swift in Sources */,
-				5266C4E82B69A857005D01CE /* Challenges+CoreDataClass.swift in Sources */,
-				5266C4E92B69A857005D01CE /* Challenges+CoreDataProperties.swift in Sources */,
 				523DF4B42B02D00500F312B8 /* WelcomeVC.swift in Sources */,
-				523DF4852B02C29100F312B8 /* Trip_Challenge.xcdatamodeld in Sources */,
 				5285B5DF2B1E7871006FA29E /* Promo.swift in Sources */,
 				5285B5D92B1D332D006FA29E /* ProfileTVC.swift in Sources */,
-				5285B7772B59D7E4006FA29E /* Challenges.xcdatamodeld in Sources */,
 				523DF4BA2B0AAD8900F312B8 /* Achievement.swift in Sources */,
 				5285B5E22B1E7B3B006FA29E /* PromoCell.swift in Sources */,
 				523DF47B2B02C29100F312B8 /* AppDelegate.swift in Sources */,
 				523DF47D2B02C29100F312B8 /* SceneDelegate.swift in Sources */,
 				5285B5D72B1D32CC006FA29E /* MapVC.swift in Sources */,
 				5285B5DD2B1D38F8006FA29E /* ChallengeDetailVC.swift in Sources */,
-				5266C4EC2B69A8C3005D01CE /* PointsOfInterest+CoreDataClass.swift in Sources */,
-				5285B77B2B61A3BB006FA29E /* DataManager.swift in Sources */,
+				5285B77B2B61A3BB006FA29E /* DatabaseManager.swift in Sources */,
 				5285B7742B548C0B006FA29E /* ChallengeCollectionViewCell.swift in Sources */,
 				523DF4BE2B0AAE6100F312B8 /* NavigationManager.swift in Sources */,
+				520A992E2B6EF54D004155D2 /* TabBarController.swift in Sources */,
 				523DF4C92B0AB5A600F312B8 /* MainVC.swift in Sources */,
 				5266C4EF2B6AE968005D01CE /* POIVC.swift in Sources */,
 			);
@@ -760,46 +755,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		523DF4C32B0AB03000F312B8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		520A99262B6E8A04004155D2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		523DF4C42B0AB03000F312B8 /* Alamofire */ = {
+		520A99272B6E8A04004155D2 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 523DF4C32B0AB03000F312B8 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = 520A99262B6E8A04004155D2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		520A99292B6E8A04004155D2 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 520A99262B6E8A04004155D2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		523DF4832B02C29100F312B8 /* Trip_Challenge.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				523DF4842B02C29100F312B8 /* Trip_Challenge.xcdatamodel */,
-			);
-			currentVersion = 523DF4842B02C29100F312B8 /* Trip_Challenge.xcdatamodel */;
-			path = Trip_Challenge.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		5285B7752B59D7E4006FA29E /* Challenges.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5285B7762B59D7E4006FA29E /* Challenges.xcdatamodel */,
-			);
-			currentVersion = 5285B7762B59D7E4006FA29E /* Challenges.xcdatamodel */;
-			path = Challenges.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 523DF46F2B02C29100F312B8 /* Project object */;
 }
