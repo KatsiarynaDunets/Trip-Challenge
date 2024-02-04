@@ -8,29 +8,23 @@
 import Foundation
 
 struct Promo {
-    let title: String
-    let description: String
-    let discount: String
-    let activeUntil: Date
-/*In this Promo struct:
+    let title: String        // Заголовок промоакции
+    let description: String  // Описание промоакции
+    let discount: String     // Скидка промоакции
+    let activeUntil: Date    // Дата окончания активности промоакции
+    let imageName: String?   // Название изображения (опционально)
     
-    title is a String that represents the title of the promo.
-    description is a String that provides details about the promo.
-    discount is a String that indicates the discount offered. You can change the type to a numeric type like Double or Int if you prefer to handle discounts as numbers.
-    activeUntil is a Date that specifies until when the promo is valid.
-    isActive() is a helper method to quickly check if the promo is still active based on the current date.
-    */
-    // Initialize a Promo object
-    
-    
-    init(title: String, description: String, discount: String, activeUntil: Date) {
+
+    // Инициализация объекта Promo
+    init(title: String, description: String, discount: String, activeUntil: Date, imageName: String? = nil) {
         self.title = title
         self.description = description
         self.discount = discount
         self.activeUntil = activeUntil
+        self.imageName = imageName
     }
 
-    // A helper function to check if the promo is currently active
+    // Вспомогательная функция для проверки активности промоакции
     func isActive() -> Bool {
         return Date() <= activeUntil
     }

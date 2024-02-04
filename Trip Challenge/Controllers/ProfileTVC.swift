@@ -9,81 +9,104 @@ import UIKit
 
 class ProfileTVC: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        enum ProfileSection: Int, CaseIterable {
+            case achievements
+            case profile
+            case settings
+            case appFeedback
+            case legal
+            case appInfo
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+            var title: String {
+                switch self {
+                case .achievements: return "Достижения"
+                case .profile: return "Профиль"
+                case .settings: return "Настройки"
+                case .appFeedback: return "Оценить приложение"
+                case .legal: return "Пользовательское соглашение"
+                case .appInfo: return "Информация о приложении"
+                }
+            }
+        }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            self.title = "Профиль"
+            setupTableView()
+        }
 
-    // MARK: - Table view data source
+        private func setupTableView() {
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+        // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+        override func numberOfSections(in tableView: UITableView) -> Int {
+            return ProfileSection.allCases.count
+        }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return ProfileSection(rawValue: section)?.title
+        }
 
-        // Configure the cell...
+        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            switch ProfileSection(rawValue: section) {
+            case .achievements, .profile, .appFeedback, .legal, .appInfo:
+                return 1
+            case .settings:
+                return 3 // Язык, единицы измерения, уведомления
+            default:
+                return 0
+            }
+        }
 
-        return cell
-    }
-    */
+        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            // Настройка ячейки в зависимости от секции и строки
+            // ...
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+            return cell
+        }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        // MARK: - Table view delegate
+
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            // Обработка нажатий на ячейки
+            // ...
+        }
+
+        // Добавьте кнопку выхода
+        override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            if section == ProfileSection.allCases.count - 1 { // Последняя секция
+                let footerView = UIView()
+                let logOutButton = UIButton(type: .system)
+                logOutButton.setTitle("Выйти", for: .normal)
+                logOutButton.addTarget(self, action: #selector(logOutTapped), for: .touchUpInside)
+                footerView.addSubview(logOutButton)
+                logOutButton.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    logOutButton.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+                    logOutButton.centerYAnchor.constraint(equalTo: footerView.centerYAnchor)
+                ])
+                return footerView
+            }
+            return nil
+        }
+
+        @objc private func logOutTapped() {
+            // Обработка нажатия на кнопку "Выйти"
+            // ...
         }
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+//    }
+//    */
+//
+//}

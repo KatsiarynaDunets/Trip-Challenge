@@ -21,7 +21,7 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 300, height: 200)
-        layout.scrollDirection = .horizontal // Возможность горизонтального скроллинга
+        layout.scrollDirection = .vertical // Возможность горизонтального скроллинга
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // Авторазмер
         collectionView.delegate = self
@@ -31,9 +31,9 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 30),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
@@ -41,9 +41,10 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     private func loadPromoData() {
         // Загрузка данных промоакций
         promoData = [
-            Promo(title: "February Sale", description: "Get 20% off on all Christmas items!", discount: "20%", activeUntil: Date().addingTimeInterval(86400 * 30)),
-            Promo(title: "Winter Special", description: "Special discounts on winter gear.", discount: "15%", activeUntil: Date().addingTimeInterval(86400 * 60)),
-            Promo(title: "Discount for couples", description: "-15% on coffe for sweet couples", discount: "15%", activeUntil: Date().addingTimeInterval(86400 * 60)),
+            Promo(title: "Февральская распродажа", description: "Распродажа зимних сувениров для ценителей искусства", discount: "20%", activeUntil: Date().addingTimeInterval(86400 * 30)),
+            Promo(title: "Зимние скидки", description: "Специальные скидки до конца зимы на посещение музея", discount: "35%", activeUntil: Date().addingTimeInterval(86400 * 60)),
+            Promo(title: "Акция для пар", description: "-15% скидка на билеты для пар", discount: "15%", activeUntil: Date().addingTimeInterval(86400 * 60)),
+//            Promo(title: "Бесплатный понедельник", description: "Бесплатное посещение выставки только по понедельникам", discount: "15%", activeUntil: Date().addingTimeInterval(86400 * 60)),
         ]
         collectionView.reloadData()
     }
@@ -60,11 +61,5 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             let promo = promoData[indexPath.row]
             cell.configure(with: promo)
             return cell
-        }
-
-        // MARK: - UICollectionViewDelegate
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let promo = promoData[indexPath.row]
-            // Логика при нажатии на промоакцию
         }
     }

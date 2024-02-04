@@ -17,11 +17,12 @@ class TabBarController: UITabBarController {
         let mapVC = MapVC()
         let promoVC = PromoVC()
         let profileTVC = ProfileTVC()
-
-        mainVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 0)
-        mapVC.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "mapIcon"), tag: 1)
-        promoVC.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(named: "promoIcon"), tag: 2)
-        profileTVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), tag: 3)
+        
+        tabBar.backgroundColor = .white
+        mainVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        mapVC.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "safari"), tag: 1)
+        promoVC.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(systemName: "percent"), tag: 2)
+        profileTVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
 
         let controllers = [mainVC, mapVC, promoVC, profileTVC].map { UINavigationController(rootViewController: $0) }
         self.viewControllers = controllers
