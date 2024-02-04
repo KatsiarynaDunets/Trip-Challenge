@@ -105,6 +105,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="safari" catalog="system" id="buS-W7-Vvp"/>
+                    <connections>
+                        <outlet property="mapView" destination="Nvg-Oh-9ag" id="noo-ds-JzX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJt-6q-8VA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

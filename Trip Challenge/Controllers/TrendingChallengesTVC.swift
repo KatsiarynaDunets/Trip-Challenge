@@ -5,9 +5,9 @@
 ////  Created by Kate on 19/11/2023.
 ////
 //
-//import UIKit
+// import UIKit
 //
-//class TrendingChallengesTVC: UITableViewController {
+// class TrendingChallengesTVC: UITableViewController {
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //
@@ -84,4 +84,4 @@
 //         // Pass the selected object to the new view controller.
 //     }
 //     */
-//}
+// }

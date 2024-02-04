@@ -5,62 +5,58 @@
 //  Created by Kate on 03/12/2023.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
-class MapVC:
+class MapVC: UIViewController, MKMapViewDelegate {
+    @IBOutlet var mapView: MKMapView!
+    var challenges: [Challenge] = [] // Challenge содержит массив POI
 
-    UIViewController, MKMapViewDelegate {
-        @IBOutlet var mapView: MKMapView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        var challenges: [Challenge] = [] //Challenge содержит массив POI
+        mapView.delegate = self
+        setupMapAnnotationsAndRoutes()
+//        view.addSubview(mapView)
+//       setupMap()
+//    createRoute()
+//        var mapView: MKMapView!
+    }
 
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            mapView.delegate = self
-//            setupMapAnnotationsAndRoutes()
-        }
+    //        // массив точек интереса
+    //        var pointsOfInterest: [PointsOfInterest] = []
 
-//        private func setupMapAnnotationsAndRoutes() {
-//            for challenge in challenges {
-//                var previousPOI: POI?
-//                for poi in challenge.pointsOfInterest.sorted(by: { $0.poiNumber < $1.poiNumber }) {
-//                    let annotation = MKPointAnnotation()
-//                    annotation.coordinate = CLLocationCoordinate2D(latitude: poiLat, longitude: poiLon)
-//                    annotation.title = poiTitle
-//                    mapView.addAnnotation(annotation)
-//
-//                    if let prev = previousPOI {
-//                        let coordinates = [CLLocationCoordinate2D(latitude: prev.latitude, longitude: prev.longitude), annotation.coordinate]
-//                        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-//                        mapView.addOverlay(polyline)
-//                    }
-//                    previousPOI = poi
-//                }
-//            }
-//        }
+    private func setupMapAnnotationsAndRoutes() {
+        for challenge in challenges {
+            var previousPOI: POI?
+            for poi in challenge.pointsOfInterest.sorted(by: { $0.poiNumber < $1.poiNumber }) {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: poi.poiLat, longitude: poi.poiLon)
+                annotation.title = poi.poiTitle
+                mapView.addAnnotation(annotation)
 
-        // MKMapViewDelegate methods to render overlay
-        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            if let polyline = overlay as? MKPolyline {
-                let renderer = MKPolylineRenderer(polyline: polyline)
-                renderer.strokeColor = UIColor.systemMint // Цвет маршрута
-                renderer.lineWidth = 3.0 // Толщина линии
-                return renderer
+                if let prev = previousPOI {
+                    let coordinates = [CLLocationCoordinate2D(latitude: prev.poiLat, longitude: prev.poiLon), annotation.coordinate]
+                    let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+                    mapView.addOverlay(polyline)
+                }
+                previousPOI = poi
             }
-            return MKOverlayRenderer(overlay: overlay)
         }
     }
-    
-//    UIViewController, MKMapViewDelegate {
-//        var mapView: MKMapView!
-//
-//        // массив точек интереса
-//        var pointsOfInterest: [PointsOfInterest] = []
-//
-//    override func viewDidLoad() {
-//           super.viewDidLoad()
-//
+
+    // MARK: MKMapViewDelegate Methods
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = UIColor.systemMint // Цвет маршрута
+            renderer.lineWidth = 3.0 // Толщина линии
+            return renderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+
 //           mapView = MKMapView(frame: self.view.bounds)
 //           mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //           mapView.delegate = self
@@ -69,24 +65,23 @@ class MapVC:
 //           setupMap()
 //           createRoute()
 //       }
-//
+
 //    private func setupMap() {
-//        // Установка региона карты на первую точку интереса
-//        if let firstPOI = pointsOfInterest.first {
-//            let initialLocation = CLLocationCoordinate2D(latitude: firstPOI.poiLat, longitude: firstPOI.poiLon)
-//            let region = MKCoordinateRegion(center: initialLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
-//            mapView.setRegion(region, animated: true)
-//        }
-//
-//
-//        // Добавление аннотаций на карту для каждой точки интереса
+//           // Установка региона карты на первую точку интереса
+//           if let firstPOI = POI.first {
+//               let initialLocation = CLLocationCoordinate2D(latitude: firstPOI.poiLat, longitude: firstPOI.poiLon)
+//               let region = MKCoordinateRegion(center: initialLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+//               mapView.setRegion(region, animated: true)
+//           }
+
+    // Добавление аннотаций на карту для каждой точки интереса
 //        for poi in pointsOfInterest {
 //            let annotation = MKPointAnnotation()
 //            annotation.coordinate = CLLocationCoordinate2D(latitude: poi.poiLat, longitude: poi.poiLon)
 //            annotation.title = poi.poiTitle
 //            mapView.addAnnotation(annotation)
 //        }
-//
+
 //       private func createRoute() {
 //           guard pointsOfInterest.count > 1 else { return }
 //
@@ -94,22 +89,4 @@ class MapVC:
 //           let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
 //           mapView.addOverlay(polyline)
 //       }
-//
-//       // MARK: MKMapViewDelegate Methods
-//
-//       func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//           if let polyline = overlay as? MKPolyline {
-//               let renderer = MKPolylineRenderer(polyline: polyline)
-//               renderer.strokeColor = UIColor.blue
-//               renderer.lineWidth = 4.0
-//               return renderer
-//           }
-//           return MKOverlayRenderer(overlay: overlay)
-//       }
-//    }
-//}
-//
-//
-//
-//
-//
+}

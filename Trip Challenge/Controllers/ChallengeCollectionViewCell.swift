@@ -8,10 +8,10 @@
 import UIKit
 
 class ChallengeCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var challengeImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel! // Добавленный UILabel для категории
-    @IBOutlet weak var poiCountLabel: UILabel! // Добавленный UILabel для количества POI
+    @IBOutlet var challengeImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var categoryLabel: UILabel! // Добавленный UILabel для категории
+    @IBOutlet var poiCountLabel: UILabel! // Добавленный UILabel для количества POI
 
     func configure(with challenge: Challenge) {
         titleLabel.text = challenge.challengeTitle

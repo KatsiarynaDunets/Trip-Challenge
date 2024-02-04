@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class TabBarController: UITabBarController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +16,7 @@ class TabBarController: UITabBarController {
         let mapVC = MapVC()
         let promoVC = PromoVC()
         let profileTVC = ProfileTVC()
-        
+
         tabBar.backgroundColor = .white
         mainVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         mapVC.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "safari"), tag: 1)

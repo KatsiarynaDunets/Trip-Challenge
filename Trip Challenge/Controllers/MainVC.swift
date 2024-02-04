@@ -7,11 +7,10 @@
 
 import CoreLocation
 import MapKit
-import UIKit
 import RealmSwift
+import UIKit
 
 class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var trendingChallengesCollectionView: UICollectionView!
     @IBOutlet var nearYouChallengesCollectionView: UICollectionView!
@@ -42,12 +41,13 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "showMapVC", let destinationVC = segue.destination as? MapVC {
-                destinationVC.challenges = self.challenges // Передача данных о челленджах
-            }
+        if segue.identifier == "showMapVC", let destinationVC = segue.destination as? MapVC {
+            destinationVC.challenges = challenges // Передача данных о челленджах
         }
+    }
     
     // MARK: CLLocationManagerDelegate Methods
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             userCoordinate = location.coordinate
@@ -64,7 +64,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         mapView.delegate = self
         
         // Добавление отметок на карту (замените координаты и информацию своими данными)
-        for challenge in (trendingChallenges + nearYouChallenges) {
+        for challenge in trendingChallenges + nearYouChallenges {
             let coordinate = CLLocationCoordinate2D(latitude: challenge.challengeLat, longitude: challenge.challengeLon)
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
@@ -106,10 +106,9 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         }
     }
     
-    
     private func updateMapAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
-        for challenge in (trendingChallenges + nearYouChallenges) {
+        for challenge in trendingChallenges + nearYouChallenges {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: challenge.challengeLat, longitude: challenge.challengeLon)
             annotation.title = challenge.challengeTitle
@@ -165,19 +164,12 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     }
 }
 
-    
-    
-
-
-
-
-
-//import CoreData
-//import CoreLocation
-//import MapKit
-//import UIKit
+// import CoreData
+// import CoreLocation
+// import MapKit
+// import UIKit
 //
-//class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 //
 //
 //
@@ -334,4 +326,4 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
 //        // размеры карточек
 //        return CGSize(width: 150, height: 100)
 //    }
-//}
+// }

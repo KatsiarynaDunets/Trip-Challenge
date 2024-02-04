@@ -8,12 +8,11 @@
 import Foundation
 
 struct Promo {
-    let title: String        // Заголовок промоакции
-    let description: String  // Описание промоакции
-    let discount: String     // Скидка промоакции
-    let activeUntil: Date    // Дата окончания активности промоакции
-    let imageName: String?   // Название изображения (опционально)
-    
+    let title: String // Заголовок промоакции
+    let description: String // Описание промоакции
+    let discount: String // Скидка промоакции
+    let activeUntil: Date // Дата окончания активности промоакции
+    let imageName: String? // Название изображения (опционально)
 
     // Инициализация объекта Promo
     init(title: String, description: String, discount: String, activeUntil: Date, imageName: String? = nil) {

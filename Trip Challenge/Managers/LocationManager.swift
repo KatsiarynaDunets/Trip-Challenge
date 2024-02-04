@@ -5,9 +5,8 @@
 //  Created by Kate on 31/01/2024.
 //
 
-
-import Foundation
 import CoreLocation
+import Foundation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = LocationManager()
@@ -17,7 +16,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
     var locationUpdateHandler: ((CLLocation) -> Void)?
 
-    private override init() {
+    override private init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -64,12 +63,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 }
 
-//Singleton Pattern: LocationManager реализован как singleton для обеспечения единственного экземпляра этого класса в приложении.
+// Singleton Pattern: LocationManager реализован как singleton для обеспечения единственного экземпляра этого класса в приложении.
 //
-//CLLocationManager: Используется для получения и отслеживания местоположения пользователя.
+// CLLocationManager: Используется для получения и отслеживания местоположения пользователя.
 //
-//Location Update Handler: locationUpdateHandler - это closure, который может быть установлен в контроллере для обработки обновлений местоположения.
+// Location Update Handler: locationUpdateHandler - это closure, который может быть установлен в контроллере для обработки обновлений местоположения.
 //
-//Запрос Разрешения: Класс запрашивает разрешение пользователя на использование геолокации и начинает обновление местоположения после получения разрешения.
+// Запрос Разрешения: Класс запрашивает разрешение пользователя на использование геолокации и начинает обновление местоположения после получения разрешения.
 //
-//CLLocationManagerDelegate: Методы делегата обрабатывают обновления местоположения и ошибки.
+// CLLocationManagerDelegate: Методы делегата обрабатывают обновления местоположения и ошибки.

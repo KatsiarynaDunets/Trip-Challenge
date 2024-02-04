@@ -23,7 +23,6 @@
 		523DF4B22B02CF0500F312B8 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */; };
 		523DF4B42B02D00500F312B8 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4B32B02D00500F312B8 /* WelcomeVC.swift */; };
 		523DF4B62B0AAD1800F312B8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4B52B0AAD1700F312B8 /* User.swift */; };
-		523DF4B82B0AAD3B00F312B8 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4B72B0AAD3B00F312B8 /* Challenge.swift */; };
 		523DF4BA2B0AAD8900F312B8 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4B92B0AAD8900F312B8 /* Achievement.swift */; };
 		523DF4BC2B0AADA000F312B8 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4BB2B0AADA000F312B8 /* Progress.swift */; };
 		523DF4BE2B0AAE6100F312B8 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */; };
@@ -81,7 +80,6 @@
 		523DF4B12B02CF0500F312B8 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		523DF4B32B02D00500F312B8 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		523DF4B52B0AAD1700F312B8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		523DF4B72B0AAD3B00F312B8 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		523DF4B92B0AAD8900F312B8 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		523DF4BB2B0AADA000F312B8 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		523DF4BD2B0AAE6100F312B8 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -186,12 +184,10 @@
 			children = (
 				523DF4B52B0AAD1700F312B8 /* User.swift */,
 				523DF4C62B0AB40000F312B8 /* AppError.swift */,
-				523DF4B72B0AAD3B00F312B8 /* Challenge.swift */,
 				5285B7782B5DBDB1006FA29E /* PointsOfInterest.swift */,
 				523DF4B92B0AAD8900F312B8 /* Achievement.swift */,
 				523DF4BB2B0AADA000F312B8 /* Progress.swift */,
 				5285B5DE2B1E7871006FA29E /* Promo.swift */,
-				5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */,
 				520A99242B6E891A004155D2 /* ChallengeModel.swift */,
 				520A992B2B6E8C59004155D2 /* POIModel.swift */,
 			);
@@ -224,6 +220,7 @@
 				523DF4C82B0AB5A600F312B8 /* MainVC.swift */,
 				523DF4CA2B0AB73600F312B8 /* TrendingChallengesTVC.swift */,
 				5285B5DC2B1D38F8006FA29E /* ChallengeDetailVC.swift */,
+				5285B7732B548C0A006FA29E /* ChallengeCollectionViewCell.swift */,
 				5285B5D62B1D32CC006FA29E /* MapVC.swift */,
 				5285B5D82B1D332D006FA29E /* ProfileTVC.swift */,
 				5285B5DA2B1D3372006FA29E /* PromoVC.swift */,
@@ -387,7 +384,6 @@
 				523DF4BC2B0AADA000F312B8 /* Progress.swift in Sources */,
 				5285B7792B5DBDB1006FA29E /* PointsOfInterest.swift in Sources */,
 				520A992C2B6E8C59004155D2 /* POIModel.swift in Sources */,
-				523DF4B82B0AAD3B00F312B8 /* Challenge.swift in Sources */,
 				520A99252B6E891A004155D2 /* ChallengeModel.swift in Sources */,
 				523DF4B22B02CF0500F312B8 /* ChallengeManager.swift in Sources */,
 				523DF4C02B0AAE8E00F312B8 /* ProfileManager.swift in Sources */,

@@ -23,6 +23,3 @@ class Challenge: Object {
     @Persisted var challengeTitle: String?
     @Persisted var pointsOfInterest: List<POI>
 }
-
-
-

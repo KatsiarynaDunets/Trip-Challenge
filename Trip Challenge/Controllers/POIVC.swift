@@ -5,8 +5,8 @@
 ////  Created by Kate on 31/01/2024.
 ////
 
-import UIKit
 import MapKit
+import UIKit
 
 class POIVC: UIViewController {
     let databaseManager = DatabaseManager()
@@ -58,44 +58,45 @@ class POIVC: UIViewController {
         // Настройка constraints
 
         NSLayoutConstraint.activate([
-               // Constraints для poiImageView
-               poiImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-               poiImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-               poiImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-               poiImageView.heightAnchor.constraint(equalToConstant: 200), // Высота может быть изменена
+            // Constraints для poiImageView
+            poiImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            poiImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            poiImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            poiImageView.heightAnchor.constraint(equalToConstant: 200), // Высота может быть изменена
 
-               // Constraints для titleLabel
-               titleLabel.topAnchor.constraint(equalTo: poiImageView.bottomAnchor, constant: 10),
-               titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-               titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            // Constraints для titleLabel
+            titleLabel.topAnchor.constraint(equalTo: poiImageView.bottomAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
-               // Constraints для categoryLabel
-               categoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-               categoryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-               categoryLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            // Constraints для categoryLabel
+            categoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            categoryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            categoryLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-               // Constraints для descriptionLabel
-               descriptionLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 10),
-               descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-               descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            // Constraints для descriptionLabel
+            descriptionLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-               // Constraints для locationLabel
-               locationLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-               locationLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-               locationLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            // Constraints для locationLabel
+            locationLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
+            locationLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            locationLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-               // Constraints для promoLabel
-               promoLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 10),
-               promoLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-               promoLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            // Constraints для promoLabel
+            promoLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 10),
+            promoLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            promoLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-               // Constraints для mapView
-               mapView.topAnchor.constraint(equalTo: promoLabel.bottomAnchor, constant: 20),
-               mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-               mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-               mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-           ])
+            // Constraints для mapView
+            mapView.topAnchor.constraint(equalTo: promoLabel.bottomAnchor, constant: 20),
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
+
 //
 //    private func configureView() {
 //       guard let poi = poi else { return }
@@ -122,6 +123,4 @@ class POIVC: UIViewController {
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
     }
-
 }
-

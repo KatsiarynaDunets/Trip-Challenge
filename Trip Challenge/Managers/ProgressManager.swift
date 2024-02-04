@@ -1,12 +1,11 @@
-////
-////  ProgressManager.swift
-////  Trip Challenge
-////
-////  Created by Kate on 19/11/2023.
-////
 //
+//  ProgressManager.swift
+//  Trip Challenge
+//
+//  Created by Kate on 19/11/2023.
+//
+
 //import Foundation
-//import CoreData
 //class ProgressManager {
 //    var progressList: [Progress]
 //

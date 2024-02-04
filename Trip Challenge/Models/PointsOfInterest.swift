@@ -10,7 +10,7 @@
 //
 //struct PointsOfInterest {
 //    // Функция для создания новой точки интереса
-//    static func createPointOfInterest(in context: NSManagedObjectContext, id: Int32, title: String, description: String, category: String, latitude: Double, longitude: Double, image: Data, promo: Bool) -> PointsOfInterest {
+//    static func createPointOfInterest( id: Int32, title: String, description: String, category: String, latitude: Double, longitude: Double, image: Data, promo: Bool) -> PointsOfInterest {
 //        let pointOfInterest = PointsOfInterest(context: context)
 //        pointOfInterest.poiID = id
 //        pointOfInterest.poiTitle = title
@@ -23,7 +23,7 @@
 //        return pointOfInterest
 //    }
 //}
-
+//
 
 
     

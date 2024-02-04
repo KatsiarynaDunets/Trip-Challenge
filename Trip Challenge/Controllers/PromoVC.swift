@@ -8,7 +8,6 @@
 import UIKit
 
 class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
     var collectionView: UICollectionView!
     var promoData: [Promo] = [] // Promo is a custom model representing each promo
 
@@ -34,7 +33,7 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 30),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
+            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
     }
 
@@ -50,16 +49,17 @@ class PromoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
 
     // MARK: - UICollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return promoData.count
-        }
 
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromoCell", for: indexPath) as? PromoCell else {
-                return UICollectionViewCell()
-            }
-            let promo = promoData[indexPath.row]
-            cell.configure(with: promo)
-            return cell
-        }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return promoData.count
     }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromoCell", for: indexPath) as? PromoCell else {
+            return UICollectionViewCell()
+        }
+        let promo = promoData[indexPath.row]
+        cell.configure(with: promo)
+        return cell
+    }
+}
