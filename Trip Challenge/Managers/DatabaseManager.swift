@@ -7,6 +7,7 @@
 
 import RealmSwift
 import SwiftUI
+import CoreLocation
 
 class DatabaseManager {
     private var database: Realm
@@ -14,9 +15,32 @@ class DatabaseManager {
     init() {
         database = try! Realm()
     }
+   
+    // Получение популярных челленджей на основе рейтинга
+       func getTrendingChallenges() -> [Challenge] {
+           let challenges = database.objects(Challenge.self)
+               .filter("challengeStatus == 'Доступен'")
+               .sorted(byKeyPath: "challengeRating", ascending: false)
+           return Array(challenges.prefix(5))
+       }
+
+       // Получение челленджей поблизости
+       func getChallengesNear(location: CLLocation) -> [Challenge] {
+           let allChallenges = database.objects(Challenge.self)
+               .filter("challengeStatus == 'Доступен'")
+           
+           let sortedChallenges = allChallenges.sorted { (challenge1, challenge2) -> Bool in
+               let location1 = CLLocation(latitude: challenge1.challengeLat, longitude: challenge1.challengeLon)
+               let location2 = CLLocation(latitude: challenge2.challengeLat, longitude: challenge2.challengeLon)
+               return location1.distance(from: location) < location2.distance(from: location)
+           }
+           return Array(sortedChallenges)
+       }
+   
+    /*В getTrendingChallenges, челленджи сначала фильтруются по статусу (например, "Доступен"), затем сортируются по убыванию рейтинга, и выбираются первые пять.
+    В getChallengesNear, челленджи сначала фильтруются по статусу. Затем используется кастомная сортировка, где каждый челлендж сравнивается по расстоянию от текущего местоположения пользователя. Возвращается массив, отсортированный от самого близкого к самому далекому.*/
     
     // MARK: POIs
-    
     struct POIData {
         let poiCategory: String
         let poiDescription: String
@@ -132,42 +156,90 @@ class DatabaseManager {
     struct ChallengeData {
         let challengeID: Int16
         let challengeTitle: String
-        let challengeCategory: String
         let challengeDescription: String
         let challengeImage: Data
+        let challengeCategory: String
         let challengeLat: Double
         let challengeLon: Double
         let challengeNumberOfPoints: Int32
-        let challengeRating: Int16
+        let challengeRating: Double
         let challengeStatus: String
     }
+
+    func addChallenge(challengeData: ChallengeData) {
+        let newChallenge = Challenge()
+        
+        
+        let pois = database.objects(POI.self).filter("poiCategory == %@", challengeData.challengeCategory)
+                for poi in pois.prefix(Int(challengeData.challengeNumberOfPoints)) {
+                    newChallenge.pointsOfInterest.append(poi)
+                }
+
+                try! database.write {
+                    database.add(newChallenge)
+                }
+            }
+    
 }
 
 extension DatabaseManager {
     // Функция для добавления челленджа
-    func addChallenge(challengeData: ChallengeData) {
-        let newChallenge = Challenge()
-        newChallenge.challengeID = challengeData.challengeID
-        newChallenge.challengeTitle = challengeData.challengeTitle
-        newChallenge.challengeCategory = challengeData.challengeCategory
-        newChallenge.challengeDescription = challengeData.challengeDescription
-        newChallenge.challengeImage = challengeData.challengeImage
-        newChallenge.challengeLat = challengeData.challengeLat
-        newChallenge.challengeLon = challengeData.challengeLon
-        newChallenge.challengeNumberOfPoints = challengeData.challengeNumberOfPoints
-        newChallenge.challengeRating = challengeData.challengeRating
-        newChallenge.challengeStatus = challengeData.challengeStatus
+    func createAndAddChallenges() {
+           guard let image16 = UIImage(named: "image16")?.jpegData(compressionQuality: 1.0),
+                 let image17 = UIImage(named: "image17")?.jpegData(compressionQuality: 1.0)
+           else {
+               print("Не удалось загрузить изображение")
+               return
+           }
+           
+           let challengesData = [
+               ChallengeData(challengeID: 1, challengeTitle: "Королевский Краков", challengeDescription: "Прогуляйтесь по Королевской дороге от самого знаменитого костела Кракова до древней резиденции Польских королей", challengeImage: image16, challengeCategory: "Средневековье", challengeLat: 50.06556388793115, challengeLon: 19.94162574007381, challengeNumberOfPoints: 5, challengeRating: 5.0, challengeStatus: "Доступен"),
+               ChallengeData(challengeID: 2, challengeTitle: "Ценителям культуры", challengeDescription: "Проведите незабываемый день окунувшись в культурную жизнь города!", challengeImage: image16, challengeCategory: "Культура", challengeLat: 50.06167506873804, challengeLon: 19.939269299798678, challengeNumberOfPoints: 5, challengeRating: 5.0, challengeStatus: "Доступен"),
+               ChallengeData(challengeID: 3, challengeTitle: "Отдыхаем на природе", challengeDescription: "Начнем с активного отдыха в зоопарке и продвинемся к любимым паркам горожан. В завершении полюбуемся городом с берега Вислы.", challengeImage: image17, challengeCategory: "Природа", challengeLat: 50.055112243120604, challengeLon: 19.854054303621297, challengeNumberOfPoints: 5, challengeRating: 5.0, challengeStatus: "Доступен")
+           ]
 
-        // Добавляем 5 POI с той же категорией, что и челлендж
-        let pois = database.objects(POI.self).filter("poiCategory == %@", challengeData.challengeCategory)
-        for poi in pois.prefix(5) {
-            newChallenge.pointsOfInterest.append(poi)
-        }
-
-        try! database.write {
-            database.add(newChallenge)
-        }
-    }
+           for challengeData in challengesData {
+               addChallenge(challengeData: challengeData)
+           }
+       }
+//        func addChallenge(challengeData: ChallengeData) {
+//            let newChallenge = Challenge()
+//            newChallenge.challengeID = challengeData.challengeID
+//            newChallenge.challengeTitle = challengeData.challengeTitle
+//            newChallenge.challengeDescription = challengeData.challengeDescription
+//            newChallenge.challengeImage = challengeData.challengeImage
+//            newChallenge.challengeCategory = challengeData.challengeCategory
+//            newChallenge.challengeLat = challengeData.challengeLat
+//            newChallenge.challengeLon = challengeData.challengeLon
+//            newChallenge.challengeNumberOfPoints = challengeData.challengeNumberOfPoints
+//            newChallenge.challengeRating = challengeData.challengeRating
+//            newChallenge.challengeStatus = challengeData.challengeStatus
+//
+//            // Добавляем POI с той же категорией, что и челлендж
+//            let pois = database.objects(POI.self).filter("poiCategory == %@", challengeData.challengeCategory)
+//            for poi in pois.prefix(Int(challengeData.challengeNumberOfPoints)) {
+//                newChallenge.pointsOfInterest.append(poi)
+//
+//                guard let image16 = UIImage(named: "image16")?.jpegData(compressionQuality: 1.0),
+//                      let image7 = UIImage(named: "image7")?.jpegData(compressionQuality: 1.0),
+//                      let image17 = UIImage(named: "image17")?.jpegData(compressionQuality: 1.0),
+//                else {
+//                    print("Не удалось загрузить изображение")
+//                    return
+//                }
+//
+//                let challenges = [
+//                    challengeData(challengeCategory: "Средневековье", challengeDescription: "Прогуляйтесь по Королевской дороге от самого знаменитого костела Кракова до древней резиденции Польских королей", challengeID: 1, challengeImage: image16, challengeLat: 50.06556388793115, challengeLon: 19.94162574007381, challengeNumberOfPoints: 5, challengeRating: 5.0, challengeStatus: "Доступен", challengeTitle: "Королевский Краков"),
+//                    challengeData(challengeCategory: "Культура", challengeDescription: "Проведите незабываемый день окунувшись в культурную жизнь города!", challengeID: 1, challengeImage: image16, challengeLat: 50.06556388793115, challengeLon: 19.94162574007381, challengeNumberOfPoints: 5, challengeRating: 5.0, challengeStatus: "Доступен", challengeTitle: "Ценителям культуры"),
+//
+//                    challengeData(challengeCategory: "Природа", challengeDescription: "Начнем с активного отдыха в зоопарке и продвинемся к любимым паркам горожан. В завершении полюбуемся городом с берега Вислы.", challengeID: 1, challengeImage: image17, challengeLat: 50.06556388793115, challengeLon: 19.94162574007381, challengeNumberOfPoints: 5, challengeRating: 5.0, challengeStatus: "Доступен", challengeTitle: "Отдыхаем на природе")
+//                    ]
+//                    }
+//
+//            try! database.write {
+//                database.add(newChallenge)
+//            }
+//        }
 
     // Функция для извлечения всех челленджей
     func getAllChallenges() -> Results<Challenge> {

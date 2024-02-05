@@ -4,7 +4,6 @@
 //
 //  Created by Kate on 03/02/2024.
 //
-
 import Foundation
 import RealmSwift
 
@@ -18,8 +17,8 @@ class Challenge: Object {
     @Persisted var challengeLocation: String?
     @Persisted var challengeLon: Double
     @Persisted var challengeNumberOfPoints: Int32
-    @Persisted var challengeRating: Int16
+    @Persisted var challengeRating: Double
     @Persisted var challengeStatus: String?
     @Persisted var challengeTitle: String?
-    @Persisted var pointsOfInterest: List<POI>
+    @Persisted var pointsOfInterest: RealmSwift.List<POI>
 }
