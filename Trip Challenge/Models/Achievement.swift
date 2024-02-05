@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreData
+
 // Achievement Model
 struct Achievement {
     var id: Int
