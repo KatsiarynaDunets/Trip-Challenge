@@ -1,11 +1,10 @@
 //
-//  ProgressManager.swift
-//  Trip Challenge
+//ProgressManager.swift
+//Trip Challenge
 //
-//  Created by Kate on 19/11/2023.
+//Created by Kate on 19/11/2023.
 //
-
-//import Foundation
+//    import Foundation
 //class ProgressManager {
 //    var progressList: [Progress]
 //
@@ -23,7 +22,7 @@
 //    }
 //}
 //
-//// Пример использования
+//// Пример
 //let progressManager = ProgressManager(progressList: [])
-////progressManager.markChallengeAsCompleted(userId: 1, challengeId: 1)
+//// progressManager.markChallengeAsCompleted(userId: 1, challengeId: 1)
 //////print(progressManager.progressList)
