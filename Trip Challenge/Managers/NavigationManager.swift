@@ -28,7 +28,7 @@ class NavigationManager: NSObject, MKMapViewDelegate {
         mapView.addAnnotation(annotation)
         
         //         Центрирование карты на местоположении челленджа
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 500, longitudinalMeters: 500)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 5, longitudinalMeters: 5)
         mapView.setRegion(region, animated: true)
         
         return .success(())

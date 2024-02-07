@@ -42,70 +42,62 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupSubviews() {
-        contentView.addSubview(challengeImageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(categoryLabel)
-        contentView.addSubview(poiCountLabel)
-        contentView.addSubview(ratingLabel)
-        contentView.addSubview(statusLabel)
+        // Add subviews to the cell's content view
+        [challengeImageView, titleLabel, categoryLabel, poiCountLabel, ratingLabel, statusLabel].forEach {
+            contentView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
 
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .left
+        titleLabel.numberOfLines = 1
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
 
-        categoryLabel.numberOfLines = 0
-        categoryLabel.textAlignment = .left
+        categoryLabel.numberOfLines = 1
+        categoryLabel.font = UIFont.systemFont(ofSize: 11)
 
-        poiCountLabel.numberOfLines = 0
-        poiCountLabel.textAlignment = .left
+        poiCountLabel.numberOfLines = 1
+        poiCountLabel.font = UIFont.systemFont(ofSize: 11)
 
-        ratingLabel.numberOfLines = 0
-        ratingLabel.textAlignment = .left
+        ratingLabel.numberOfLines = 1
+        ratingLabel.font = UIFont.systemFont(ofSize: 11)
 
-        statusLabel.numberOfLines = 0
-        statusLabel.textAlignment = .left
+        statusLabel.numberOfLines = 1
+        statusLabel.font = UIFont.systemFont(ofSize: 11)
     }
 
     private func setupConstraints() {
-        challengeImageView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        poiCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        ratingLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
-            challengeImageView.topAnchor.constraint(equalTo: topAnchor),
-            challengeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            challengeImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            challengeImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6),
+            challengeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            challengeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            challengeImageView.widthAnchor.constraint(equalToConstant: 50),
+            challengeImageView.heightAnchor.constraint(equalToConstant: 50),
 
-            titleLabel.topAnchor.constraint(equalTo: challengeImageView.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            titleLabel.leadingAnchor.constraint(equalTo: challengeImageView.trailingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
 
-            categoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            categoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            categoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            categoryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            categoryLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-            poiCountLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 4),
-            poiCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            poiCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            poiCountLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 2),
+            poiCountLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            poiCountLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-            ratingLabel.topAnchor.constraint(equalTo: poiCountLabel.bottomAnchor, constant: 4),
-            ratingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            ratingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            ratingLabel.topAnchor.constraint(equalTo: poiCountLabel.bottomAnchor, constant: 2),
+            ratingLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            ratingLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-            statusLabel.topAnchor.constraint(equalTo: ratingLabel.bottomAnchor, constant: 4),
-            statusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            statusLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+            statusLabel.topAnchor.constraint(equalTo: ratingLabel.bottomAnchor, constant: 2),
+            statusLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            statusLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            statusLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -5)
         ])
     }
 
     private func setupCellAppearance() {
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
-        challengeImageView.layer.cornerRadius = 10
+        challengeImageView.layer.cornerRadius = 5
         challengeImageView.clipsToBounds = true
     }
 }

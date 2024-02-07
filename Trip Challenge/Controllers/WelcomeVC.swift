@@ -28,7 +28,7 @@ class WelcomeVC: UIViewController, CLLocationManagerDelegate {
         case .restricted, .denied:
             showAlertToEnableLocationServices()
         case .authorizedWhenInUse, .authorizedAlways:
-            performSegue(withIdentifier: "showMainVC", sender: self)
+            performSegue(withIdentifier: "showMainVC", sender: startBtnTapped)
         @unknown default:
             fatalError("Unhandled authorization status")
         }

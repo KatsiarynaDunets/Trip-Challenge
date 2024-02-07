@@ -3,7 +3,6 @@
 //  Trip Challenge
 //
 //  Created by Kate on 19/11/2023.
-//
 
 import CoreLocation
 import MapKit
@@ -181,7 +180,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             if let userLocation = locationManager.location {
                 nearYouChallenges = Array(allChallenges.filter { challenge in
                     let challengeLocation = CLLocation(latitude: challenge.challengeLat, longitude: challenge.challengeLon)
-                    return challengeLocation.distance(from: userLocation) < 5000 // в радиусе 5 км
+                    return challengeLocation.distance(from: userLocation) < 500000000 // в радиусе 50 км
                 })
             } else {
                 nearYouChallenges = []
@@ -210,6 +209,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     
     //     MARK: - UICollectionViewDataSource
     
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == trendingChallengesCollectionView {
             return trendingChallenges.count
@@ -221,7 +221,9 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == trendingChallengesCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChallengeCollectionViewCell", for: indexPath) as! ChallengeCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChallengeCollectionViewCell", for: indexPath) as? ChallengeCollectionViewCell else {
+                fatalError("Unable to dequeue ChallengeCollectionViewCell")
+            }
             let challenge = trendingChallenges[indexPath.item]
             cell.configure(with: challenge)
             return cell
@@ -231,7 +233,6 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             cell.configure(with: challenge)
             return cell
         }
-        
         return UICollectionViewCell()
     }
     
@@ -260,4 +261,5 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         // размеры карточек
         return CGSize(width: 150, height: 100)
     }
+    
 }
