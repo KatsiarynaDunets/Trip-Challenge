@@ -1,13 +1,6 @@
 # Trip-Challenge
 Trip Challenge is a travel app that helps people get unusual experiences in new cities. Use this app to visit all the cities without boring guides and typical routes. With a focus on providing an engaging user experience, this app integrates challenges and points of interest (POIs) within a city, encouraging users to discover and learn about new places in a fun and exciting way.
 
-
-🔸 Project Features
-Written in Swift
-Implemented MVC design pattern
-Implemented Core Data
-Did NOT implement 3rd party libraries
-
 🔹 App Features
 Discover New Challenges: Users can find various challenges in the app, each consisting of a series of points grouped by categories such as "Medieval," "Culture," or "Nature."
 Explore Points of Interest: Each POI provides detailed information, including a description, images, and location.
