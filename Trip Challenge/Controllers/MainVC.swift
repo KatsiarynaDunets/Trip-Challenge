@@ -3,7 +3,6 @@
 //  Trip Challenge
 //
 //  Created by Kate on 19/11/2023.
-//
 
 import CoreLocation
 import MapKit
@@ -16,57 +15,80 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     @IBOutlet var nearYouChallengesCollectionView: UICollectionView!
     @IBOutlet var citySelectionMenu: UIButton!
     
-    @IBOutlet weak var trendingChallengesBtn: UIButton!
-    @IBOutlet weak var challengesNearYouBtn: UIButton!
+    @IBOutlet var trendingChallengesBtn: UIButton!
+    @IBOutlet var nearYouChallengesBtn: UIButton!
     
     var trendingChallenges: [Challenge] = []
     var nearYouChallenges: [Challenge] = []
     var userCoordinate: CLLocationCoordinate2D?
     var locationManager = CLLocationManager()
     var challenges: [Challenge] = []
-    private var databaseManager = DatabaseManager()
+    var databaseManager = DatabaseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupMapView()
+        loadDataIfNeeded()
         loadChallenges()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         fetchChallenges()
+        updateMapAnnotations()
+        setupCollectionViews()
+        handleLocationAccessDenied()
+        trendingChallengesButtonTapped(trendingChallengesBtn)
+        trendingChallengesCollectionView.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: "ChallengeCollectionViewCell")
+        nearYouChallengesCollectionView.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: "ChallengeCollectionViewCell")
     }
-
+    
     private func setupCollectionViews() {
         trendingChallengesCollectionView.delegate = self
         trendingChallengesCollectionView.dataSource = self
         nearYouChallengesCollectionView.delegate = self
         nearYouChallengesCollectionView.dataSource = self
-        // Регистрация кастомной ячейки
-                let nib = UINib(nibName: "ChallengeCollectionViewCell", bundle: nil)
-                trendingChallengesCollectionView.register(nib, forCellWithReuseIdentifier: "TrendingChallengeCell")
-                nearYouChallengesCollectionView.register(nib, forCellWithReuseIdentifier: "NearYouChallengeCell")
-            }
-
+        
+        // Register the custom cell class
+        trendingChallengesCollectionView.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: "ChallengeCollectionViewCell")
+        nearYouChallengesCollectionView.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: "ChallengeCollectionViewCell")
+    }
+    
+    private func loadDataIfNeeded() {
+        let realm = try! Realm()
+        
+        // Проверка наличия данных POI
+        if realm.objects(POI.self).isEmpty {
+            databaseManager.addPOIs()
+        }
+        
+        // Проверка наличия данных челленджей
+        if realm.objects(Challenge.self).isEmpty {
+            databaseManager.createAndAddChallenges()
+        }
+        
+        // После добавления данных, загрузить их для отображения
+        loadChallenges()
+    }
+    
+    // Функция для загрузки челленджей
     private func loadChallenges() {
-        // Загрузка популярных челленджей
+        // Загрузка данных челленджей из базы данных для отображения на экране
         trendingChallenges = databaseManager.getTrendingChallenges()
-
-        // Загрузка челленджей поблизости
         if let userLocation = locationManager.location {
             nearYouChallenges = databaseManager.getChallengesNear(location: userLocation)
         } else {
             nearYouChallenges = []
         }
-
+        
         // Обновление интерфейса
         DispatchQueue.main.async {
             self.trendingChallengesCollectionView.reloadData()
             self.nearYouChallengesCollectionView.reloadData()
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMapVC", let destinationVC = segue.destination as? MapVC {
             destinationVC.challenges = challenges // Передача данных о челленджах
@@ -74,25 +96,22 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     }
     
     // MARK: CLLocationManagerDelegate Methods
-
-//    CLLocationManagerDelegate методы для обработки ответа пользователя
+    
+    //    CLLocationManagerDelegate методы для обработки ответа пользователя
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             // Разрешение получено, можно начинать использовать геолокацию
             locationManager.startUpdatingLocation()
         case .denied, .restricted:
-//             Пользователь отказал в доступе или доступ ограничен (например, родительским контролем)
+            //             Пользователь отказал в доступе или доступ ограничен (например, родительским контролем)
             handleLocationAccessDenied()
-//
-//        case .notDetermined:
-//            <#code#>
         @unknown default:
             // Неизвестный статус, полезно для будущих версий iOS
             break
         }
     }
-
+    
     private func handleLocationAccessDenied() {
         // Функция для обработки отказа в доступе к геолокации
         let alert = UIAlertController(title: "Доступ к геолокации запрещен", message: "Пожалуйста, включите доступ к геолокации в настройках, чтобы использовать все функции приложения.", preferredStyle: .alert)
@@ -130,7 +149,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         annotation.coordinate = coordinate
         annotation.title = "Краков"
         mapView.addAnnotation(annotation)
-
+        
         // Добавление отметок на карту (замените координаты и информацию своими данными)
         for challenge in trendingChallenges + nearYouChallenges {
             let coordinate = CLLocationCoordinate2D(latitude: challenge.challengeLat, longitude: challenge.challengeLon)
@@ -150,7 +169,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     private func fetchChallenges() {
         do {
             let realm = try Realm()
-
+            
             // Загрузка всех челленджей
             let allChallenges = realm.objects(Challenge.self)
             
@@ -161,7 +180,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             if let userLocation = locationManager.location {
                 nearYouChallenges = Array(allChallenges.filter { challenge in
                     let challengeLocation = CLLocation(latitude: challenge.challengeLat, longitude: challenge.challengeLon)
-                    return challengeLocation.distance(from: userLocation) < 5000 // в радиусе 5 км
+                    return challengeLocation.distance(from: userLocation) < 500000000 // в радиусе 50 км
                 })
             } else {
                 nearYouChallenges = []
@@ -177,7 +196,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             print("Ошибка при загрузке данных из Realm: \(error)")
         }
     }
-
+    
     private func updateMapAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
         for challenge in trendingChallenges + nearYouChallenges {
@@ -190,6 +209,7 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     
     //     MARK: - UICollectionViewDataSource
     
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == trendingChallengesCollectionView {
             return trendingChallenges.count
@@ -201,21 +221,23 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == trendingChallengesCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingChallengeCell", for: indexPath) as! ChallengeCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChallengeCollectionViewCell", for: indexPath) as? ChallengeCollectionViewCell else {
+                fatalError("Unable to dequeue ChallengeCollectionViewCell")
+            }
             let challenge = trendingChallenges[indexPath.item]
             cell.configure(with: challenge)
             return cell
         } else if collectionView == nearYouChallengesCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NearYouChallengeCell", for: indexPath) as! ChallengeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChallengeCollectionViewCell", for: indexPath) as! ChallengeCollectionViewCell
             let challenge = nearYouChallenges[indexPath.item]
             cell.configure(with: challenge)
             return cell
         }
-        
         return UICollectionViewCell()
     }
     
     // MARK: - UICollectionViewDelegate
+
     @IBAction func trendingChallengesButtonTapped(_ sender: UIButton) {
         let trendingVC = TrendingCollectionVC()
         navigationController?.pushViewController(trendingVC, animated: true)
@@ -228,12 +250,10 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         } else {
             selectedChallenge = nearYouChallenges[indexPath.item]
         }
-
         let trendingChallengesVC = TrendingChallengesVC()
         trendingChallengesVC.challenge = selectedChallenge
         navigationController?.pushViewController(trendingChallengesVC, animated: true)
     }
-
     
     // MARK: - UICollectionViewDelegateFlowLayout
     
@@ -241,62 +261,5 @@ class MainVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         // размеры карточек
         return CGSize(width: 150, height: 100)
     }
+    
 }
-//
-//    // MARK: - Navigation
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showChallengeDetail" {
-//            if let detailVC = segue.destination as? ChallengeDetailVC, let challenges = sender as? Challenge {
-//                detailVC.challenge = challenges
-//            }
-//        }
-//    }
-//
-//    // MARK: - UICollectionViewDataSource
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if collectionView == trendingChallengesCollectionView {
-//            return trendingChallenges.count
-//        } else if collectionView == nearYouChallengesCollectionView {
-//            return nearYouChallenges.count
-//        }
-//        return 0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if collectionView == trendingChallengesCollectionView {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingChallengeCell", for: indexPath) as! ChallengeCollectionViewCell
-//            let challenge = trendingChallenges[indexPath.item]
-//            cell.configure(with: challenge)
-//            return cell
-//        } else if collectionView == nearYouChallengesCollectionView {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NearYouChallengeCell", for: indexPath) as! ChallengeCollectionViewCell
-//            let challenge = nearYouChallenges[indexPath.item]
-//            cell.configure(with: challenge)
-//            return cell
-//        }
-//
-//        return UICollectionViewCell()
-//    }
-//
-//    // MARK: - UICollectionViewDelegate
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        // Обработка нажатия на карточку
-//        let selectedChallenge: Challenges
-//        if collectionView == trendingChallengesCollectionView {
-//            selectedChallenge = trendingChallenges[indexPath.item]
-//        } else {
-//            selectedChallenge = nearYouChallenges[indexPath.item]
-//        }
-//        performSegue(withIdentifier: "showChallengeDetail", sender: selectedChallenge)
-//    }
-//
-//    // MARK: - UICollectionViewDelegateFlowLayout
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        // размеры карточек
-//        return CGSize(width: 150, height: 100)
-//    }
-// }
