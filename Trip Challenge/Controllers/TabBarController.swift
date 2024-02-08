@@ -22,12 +22,8 @@ class TabBarController: UITabBarController {
         mapVC.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 1)
         promoVC.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(systemName: "percent"), tag: 2)
         profileTVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
-
-        // Wrap each view controller in a navigation controller
         let controllers = [mainVC, mapVC, promoVC, profileTVC].map { UINavigationController(rootViewController: $0) }
         self.viewControllers = controllers
-
-        // Optional: Customize tab bar appearance
         tabBar.backgroundColor = .white
     }
 }

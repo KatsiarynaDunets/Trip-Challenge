@@ -18,12 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureRealm() {
-        // Configure Realm database with schema version and migration block
         let config = Realm.Configuration(
-            // Update schema version with every change in data format
             schemaVersion: 1,
-
-            // Migration block to handle changes in schema
             migrationBlock: { _, oldSchemaVersion in
                 // Migration code, if necessary, to handle changes
                 // For example, when adding new fields or modifying existing ones
@@ -50,3 +46,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
+

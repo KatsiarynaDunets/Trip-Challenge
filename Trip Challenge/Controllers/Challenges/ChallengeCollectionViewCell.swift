@@ -5,7 +5,10 @@
 //  Created by Kate on 05/02/2024.
 //
 
+import CoreLocation
+import MapKit
 import UIKit
+import RealmSwift
 
 class ChallengeCollectionViewCell: UICollectionViewCell {
     var challengeImageView = UIImageView()
@@ -28,8 +31,8 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with challenge: Challenge) {
-        titleLabel.text = challenge.challengeTitle
-        categoryLabel.text = challenge.challengeCategory
+        titleLabel.text = "\(challenge.challengeTitle)"
+        categoryLabel.text = "\(challenge.challengeCategory)"
         poiCountLabel.text = "POIs: \(challenge.pointsOfInterest.count)"
         ratingLabel.text = "⭐️ \(challenge.challengeRating)"
         statusLabel.text = challenge.challengeStatus
@@ -37,7 +40,7 @@ class ChallengeCollectionViewCell: UICollectionViewCell {
         if let imageData = challenge.challengeImage, let image = UIImage(data: imageData) {
             challengeImageView.image = image
         } else {
-            challengeImageView.image = UIImage(named: "defaultImage") // default image if imageData is not available
+            challengeImageView.image = UIImage(named: "image1")
         }
     }
 

@@ -27,8 +27,8 @@ class NavigationManager: NSObject, MKMapViewDelegate {
         annotation.subtitle = challenge.challengeCategory
         mapView.addAnnotation(annotation)
         
-        //         Центрирование карты на местоположении челленджа
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 5, longitudinalMeters: 5)
+        // Центрирование карты на местоположении челленджа
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 500, longitudinalMeters: 500)
         mapView.setRegion(region, animated: true)
         
         return .success(())
@@ -41,12 +41,4 @@ class NavigationManager: NSObject, MKMapViewDelegate {
         }
         return CLLocationCoordinate2D(latitude: coordinates[0], longitude: coordinates[1])
     }
-    // }
-    
-    // Пример использования с обработкой ошибок
-//    let mapView = MKMapView()
-//    let navigationManager = NavigationManager(mapView: mapView)
-//    if case `let` Result.failure(error) = navigationManager.showChallengeLocation(challenge: challenge1) {
-//        print("Error: \(error)")
-//    }
 }

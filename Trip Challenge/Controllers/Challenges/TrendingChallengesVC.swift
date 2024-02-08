@@ -5,7 +5,10 @@
 //  Created by Kate on 19/11/2023.
 //
 
+import CoreLocation
+import MapKit
 import UIKit
+import RealmSwift
 
 class TrendingChallengesVC: UIViewController {
     var challengeImageView = UIImageView()
@@ -87,16 +90,18 @@ class TrendingChallengesVC: UIViewController {
     private func configureView() {
         guard let challenge = challenge else { return }
 
-        titleLabel.text = challenge.challengeTitle
-        categoryLabel.text = challenge.challengeCategory
+        titleLabel.text = "\(challenge.challengeTitle)"
+        categoryLabel.text = "\(challenge.challengeCategory)"
         ratingLabel.text = "⭐️ \(challenge.challengeRating)"
         poiCountLabel.text = "POIs: \(challenge.pointsOfInterest.count)"
         descriptionLabel.text = challenge.challengeDescription
 
-        if let imageData = challenge.challengeImage, let image = UIImage(data: imageData) {
+        let image: UIImage?
+            if let imageData = challenge.challengeImage {
+                image = UIImage(data: imageData)
+            } else {
+                image = UIImage(named: "image1")
+            }
             challengeImageView.image = image
-        } else {
-            challengeImageView.image = UIImage(named: "defaultImage")
-        }
     }
 }

@@ -155,7 +155,6 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
             star.image = index < rating ? UIImage(named: "star_filled") : UIImage(named: "star_empty") // Замените на ваши изображения
         }
         
-        //        challenge?.rating = poiRating
         // ... Добавить distanceLabel, pointsLabel, ratingStarsView и descriptionLabel
         
         // Настройка Discover Button
@@ -205,4 +204,6 @@ class ChallengeDetailVC: UIViewController, CLLocationManagerDelegate {
         pointsLabel.text = "Количество точек: \(challenge.challengeNumberOfPoints)"
         updateRating(Int(challenge.challengeRating))
     }
+    
+    
 }

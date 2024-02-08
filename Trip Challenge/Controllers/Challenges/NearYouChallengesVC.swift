@@ -7,6 +7,7 @@
 
 import CoreLocation
 import UIKit
+import RealmSwift
 
 class NearYouChallengesVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private var collectionView: UICollectionView!

@@ -5,11 +5,14 @@
 //  Created by Kate on 05/02/2024.
 //
 
+import CoreLocation
 import UIKit
 
 class TrendingCollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private var collectionView: UICollectionView!
     private var trendingChallenges: [Challenge] = [] // Данные популярных челленджей
+    private var locationManager: CLLocationManager! // Declare locationManager
+    private var databaseManager = DatabaseManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +44,13 @@ class TrendingCollectionVC: UIViewController, UICollectionViewDelegate, UICollec
     }
 
     private func loadTrendingChallenges() {
-        // Загрузитm данные популярных челленджей
-        // trendingChallenges = ...
+        if let userLocation = locationManager.location {
+            trendingChallenges = databaseManager.getChallengesNear(location: userLocation)
+        } else {
+            trendingChallenges = []
+        }
+
+        collectionView.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
@@ -95,7 +103,4 @@ class TrendingCollectionVC: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
 
-    // MARK: UICollectionViewDelegate
-
-    // Обработка выбора ячейки...
 }

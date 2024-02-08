@@ -240,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				523DF4B32B02D00500F312B8 /* WelcomeVC.swift */,
-				520A992D2B6EF54D004155D2 /* TabBarController.swift */,
 				523DF4C82B0AB5A600F312B8 /* MainVC.swift */,
+				520A992D2B6EF54D004155D2 /* TabBarController.swift */,
 				5285B5D62B1D32CC006FA29E /* MapVC.swift */,
 				520A99332B706B28004155D2 /* Promo */,
 				5285B5D82B1D332D006FA29E /* ProfileTVC.swift */,

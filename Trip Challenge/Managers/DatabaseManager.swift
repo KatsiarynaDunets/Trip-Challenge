@@ -19,6 +19,7 @@ class DatabaseManager {
         getTrendingChallenges()
         getAllPOIs()
         getAllChallenges()
+        fetchChallenges()
     }
    
     // Получение популярных челленджей на основе рейтинга
@@ -95,25 +96,25 @@ class DatabaseManager {
                 
                 POIData(poiCategory: "Средневековье", poiDescription: "Символ польской государственности и культуры, древняя резиденция польских королей. Замок включает в себя ряд зданий, каждое из которых уникально по своему архитектурному стилю.", poiID: 5, poiImage: image5, poiLat: 50.05451062920299, poiLocation: "50.05451062920299, 19.93492129223292", poiLon: 19.93492129223292, poiNumber: 5, poiPromo: false, poiStatus: "Доступен", poiTitle: "Вавельский замок"),
                 
-                POIData(poiCategory: "Культура", poiDescription: "Содержит богатые коллекции польского искусства от средневековья до современности, включая известные произведения Яна Матейко.", poiID: 6, poiImage: image6, poiLat: 50.06065494915645, poiLocation: "50.06065494915645, 19.92361854069063", poiLon: 19.92361854069063, poiNumber: 1, poiPromo: false, poiStatus: "Доступен", poiTitle: "Национальный музей в Кракове"),
+                POIData(poiCategory: "Культура", poiDescription: "Содержит богатые коллекции польского искусства от средневековья до современности, включая известные произведения Яна Матейко.", poiID: 6, poiImage: image6, poiLat: 50.06065494915645, poiLocation: "50.06065494915645, 19.92361854069063", poiLon: 19.92361854069063, poiNumber: 6, poiPromo: false, poiStatus: "Доступен", poiTitle: "Национальный музей в Кракове"),
                 
-                POIData(poiCategory: "Культура", poiDescription: "Один из старейших и наиболее уважаемых театров в Польше, известен своей великолепной архитектурой и историей.", poiID: 7, poiImage: image7, poiLat: 50.06403848711694, poiLocation: "50.06403848711694, 19.942753509784144", poiLon: 19.942753509784144, poiNumber: 2, poiPromo: false, poiStatus: "Доступен", poiTitle: "Театр Юлиуша Словацкого"),
+                POIData(poiCategory: "Культура", poiDescription: "Один из старейших и наиболее уважаемых театров в Польше, известен своей великолепной архитектурой и историей.", poiID: 6, poiImage: image7, poiLat: 50.06403848711694, poiLocation: "50.06403848711694, 19.942753509784144", poiLon: 19.942753509784144, poiNumber: 2, poiPromo: false, poiStatus: "Доступен", poiTitle: "Театр Юлиуша Словацкого"),
                 
-                POIData(poiCategory: "Культура", poiDescription: "Памятник культуры Малопольского воеводства. (1751 г.) Один из самых известных польских санктуариев. Имеет также наименование Скалка, что на польском языке означает «маленький камень». Рядом находится сторическое кладбище, где похоронены многие известные польские деятели культуры и искусства.", poiID: 8, poiImage: image8, poiLat: 50.04875922916379, poiLocation: "50.04875922916379, 19.937643674404907", poiLon: 19.937643674404907, poiNumber: 3, poiPromo: false, poiStatus: "Доступен", poiTitle: "Костёл на Скалке"),
+                POIData(poiCategory: "Культура", poiDescription: "Памятник культуры Малопольского воеводства. (1751 г.) Один из самых известных польских санктуариев. Имеет также наименование Скалка, что на польском языке означает «маленький камень». Рядом находится сторическое кладбище, где похоронены многие известные польские деятели культуры и искусства.", poiID: 8, poiImage: image8, poiLat: 50.04875922916379, poiLocation: "50.04875922916379, 19.937643674404907", poiLon: 19.937643674404907, poiNumber: 6, poiPromo: false, poiStatus: "Доступен", poiTitle: "Костёл на Скалке"),
                 
-                POIData(poiCategory: "Культура", poiDescription: "Исторический район, который был центром еврейской жизни в Кракове на протяжении веков. Сегодня здесь можно найти множество кафе, галерей и музеев.", poiID: 9, poiImage: image9, poiLat: 50.05180249673518, poiLocation: "50.05180249673518, 19.945126804820717", poiLon: 19.945126804820717, poiNumber: 4, poiPromo: false, poiStatus: "Доступен", poiTitle: "Казимеж (Еврейский квартал)"),
+                POIData(poiCategory: "Культура", poiDescription: "Исторический район, который был центром еврейской жизни в Кракове на протяжении веков. Сегодня здесь можно найти множество кафе, галерей и музеев.", poiID: 9, poiImage: image9, poiLat: 50.05180249673518, poiLocation: "50.05180249673518, 19.945126804820717", poiLon: 19.945126804820717, poiNumber: 9, poiPromo: false, poiStatus: "Доступен", poiTitle: "Казимеж (Еврейский квартал)"),
                 
-                POIData(poiCategory: "Культура", poiDescription: "Этот музей расположен на территории бывшей фабрики Оскара Шиндлера и посвящен истории Кракова во время Второй мировой войны.", poiID: 10, poiImage: image10, poiLat: 50.047499162028906, poiLocation: "50.047499162028906, 19.961754806770323", poiLon: 19.961754806770323, poiNumber: 5, poiPromo: false, poiStatus: "Доступен", poiTitle: "Фабрика Шиндлера"),
+                POIData(poiCategory: "Культура", poiDescription: "Этот музей расположен на территории бывшей фабрики Оскара Шиндлера и посвящен истории Кракова во время Второй мировой войны.", poiID: 10, poiImage: image10, poiLat: 50.047499162028906, poiLocation: "50.047499162028906, 19.961754806770323", poiLon: 19.961754806770323, poiNumber: 10, poiPromo: false, poiStatus: "Доступен", poiTitle: "Фабрика Шиндлера"),
                 
-                POIData(poiCategory: "Природа", poiDescription: "Расположен в лесопарке Вольски, предлагает посетителям увидеть множество различных видов животных в приближенных к натуральным условиях.", poiID: 11, poiImage: image11, poiLat: 50.055112243120604, poiLocation: "50.055112243120604, 19.854054303621297", poiLon: 19.854054303621297, poiNumber: 1, poiPromo: false, poiStatus: "Доступен", poiTitle: "Краковский зоопарк"),
+                POIData(poiCategory: "Природа", poiDescription: "Расположен в лесопарке Вольски, предлагает посетителям увидеть множество различных видов животных в приближенных к натуральным условиях.", poiID: 11, poiImage: image11, poiLat: 50.055112243120604, poiLocation: "50.055112243120604, 19.854054303621297", poiLon: 19.854054303621297, poiNumber: 11, poiPromo: false, poiStatus: "Доступен", poiTitle: "Краковский зоопарк"),
                 
-                POIData(poiCategory: "Природа", poiDescription: "Искусственный курган, созданный в 1820 году в память о национальном герое Польши Тадеуше Костюшко.", poiID: 12, poiImage: image12, poiLat: 50.05496624021756, poiLocation: "50.05496624021756, 19.893337235525085", poiLon: 19.893337235525085, poiNumber: 2, poiPromo: false, poiStatus: "Доступен", poiTitle: "Курган Костюшко"),
+                POIData(poiCategory: "Природа", poiDescription: "Искусственный курган, созданный в 1820 году в память о национальном герое Польши Тадеуше Костюшко.", poiID: 12, poiImage: image12, poiLat: 50.05496624021756, poiLocation: "50.05496624021756, 19.893337235525085", poiLon: 19.893337235525085, poiNumber: 22, poiPromo: false, poiStatus: "Доступен", poiTitle: "Курган Костюшко"),
                 
-                POIData(poiCategory: "Природа", poiDescription: "Огромный луг почти в центре города. Прекрасное место для семейного и активного отдыха.", poiID: 13, poiImage: image13, poiLat: 50.05970183469366, poiLocation: "50.05970183469366, 19.909546890212706", poiLon: 19.909546890212706, poiNumber: 3, poiPromo: false, poiStatus: "Доступен", poiTitle: "Блоня (Błonia)"),
+                POIData(poiCategory: "Природа", poiDescription: "Огромный луг почти в центре города. Прекрасное место для семейного и активного отдыха.", poiID: 13, poiImage: image13, poiLat: 50.05970183469366, poiLocation: "50.05970183469366, 19.909546890212706", poiLon: 19.909546890212706, poiNumber: 13, poiPromo: false, poiStatus: "Доступен", poiTitle: "Блоня (Błonia)"),
                 
-                POIData(poiCategory: "Природа", poiDescription: "Один из первых общественных парков в Европе, предлагает разнообразные развлечения и зоны отдыха для всех возрастов.", poiID: 14, poiImage: image14, poiLat: 50.06247096459591, poiLocation: "50.06247096459591, 19.916071519618683", poiLon: 19.916071519618683, poiNumber: 4, poiPromo: false, poiStatus: "Доступен", poiTitle: "Парк Йордана"),
+                POIData(poiCategory: "Природа", poiDescription: "Один из первых общественных парков в Европе, предлагает разнообразные развлечения и зоны отдыха для всех возрастов.", poiID: 14, poiImage: image14, poiLat: 50.06247096459591, poiLocation: "50.06247096459591, 19.916071519618683", poiLon: 19.916071519618683, poiNumber: 14, poiPromo: false, poiStatus: "Доступен", poiTitle: "Парк Йордана"),
                 
-                POIData(poiCategory: "Природа", poiDescription: "Прогулка вдоль набережной Вислы позволяет насладиться видами на город и спокойствием реки.", poiID: 15, poiImage: image15, poiLat: 50.05478501547104, poiLocation: "50.05478501547104, 19.928502374881113", poiLon: 19.928502374881113, poiNumber: 5, poiPromo: false, poiStatus: "Доступен", poiTitle: "Река Висла")
+                POIData(poiCategory: "Природа", poiDescription: "Прогулка вдоль набережной Вислы позволяет насладиться видами на город и спокойствием реки.", poiID: 15, poiImage: image15, poiLat: 50.05478501547104, poiLocation: "50.05478501547104, 19.928502374881113", poiLon: 19.928502374881113, poiNumber: 15, poiPromo: false, poiStatus: "Доступен", poiTitle: "Река Висла")
             ]
             
             try? database.write {
@@ -188,9 +189,10 @@ class DatabaseManager {
     }
 }
 
+
 extension DatabaseManager {
-    // Функция для добавления челленджа
     
+    // Функция для добавления челленджа
     func createAndAddChallenges() {
         let existingChallengesCount = database.objects(Challenge.self).count
         if existingChallengesCount == 0 {
@@ -221,6 +223,13 @@ extension DatabaseManager {
             }
         }
     }
+    
+    func fetchChallenges() -> [Challenge] {
+            let realm = try! Realm()
+            return Array(realm.objects(Challenge.self))
+        }
+
+    
     // Функция для извлечения всех челленджей
     func getAllChallenges() -> Results<Challenge> {
         return database.objects(Challenge.self)
@@ -232,7 +241,7 @@ extension DatabaseManager {
             try! database.write {
                 challengeToUpdate.challengeTitle = newChallengeData.challengeTitle
                 challengeToUpdate.challengeDescription = newChallengeData.challengeDescription
-                // Обновите другие поля по необходимости
+                
             }
         }
     }
@@ -247,4 +256,4 @@ extension DatabaseManager {
     }
 }
 
-//Migration Handling: The code does not currently handle database migrations. As  data model evolves,  will be need to manage schema versions and provide migration blocks to update existing data to the new schema without losing data.
+
